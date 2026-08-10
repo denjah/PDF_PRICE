@@ -1,0 +1,339 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "rasson-victory-ii-plus-white",
+  "locale": "ru-RU",
+  "title": "RASSON Victory II Plus White",
+  "theme": "home",
+  "variant": "dark",
+  "materialsRoot": "D:/!PROJECTS/RASSON/Victory 2_white",
+  "assetRoot": "/decks/rasson-victory-ii-plus-white/assets",
+  "product": {
+    "brand": "RASSON",
+    "model": "Victory II Plus",
+    "edition": "White",
+    "game": "Американский пул",
+    "sizesFt": [9],
+    "articles": { "9": null },
+    "manufacturer": "RASSON Billiards, Китай",
+    "distributor": "Weekend Billiard, Россия",
+    "price": null
+  },
+  "narrative": {
+    "audience": "Клиент после консультации с менеджером Weekend Billiard: владелец частного интерьера, клуба или VIP-пространства.",
+    "communicationJob": "Помочь клиенту выбрать Victory II Plus White как профессиональный стол и архитектурный центр пространства, а затем перейти к подбору размера, доставке и монтажу.",
+    "centralTakeaway": "Victory II Plus White соединяет турнирную точность RASSON, выразительную V-архитектуру и сервис официального дистрибьютора Weekend Billiard."
+  },
+  "sources": [
+    { "id": "info-site", "label": "Victory II Plus White — информационный сайт", "path": "MARKETING/Info_site.md", "kind": "brief" },
+    { "id": "complete-guide", "label": "Victory II Plus — полное досье", "path": "MARKETING/Rasson_Victory_2_Plus_Complete_Guide.md", "kind": "brief" },
+    { "id": "legacy-copy", "label": "Тексты прежней презентации — только фактологический источник", "path": "MARKETING/Victory_2F_Presentation_Texts.md", "kind": "copy" },
+    { "id": "visual-catalog", "label": "Каталог визуальных ассетов Victory II Plus White", "path": "MARKETING/Visual_Asset_Catalog.md", "kind": "visual-catalog" },
+    { "id": "brand-guide", "label": "Гид по логотипам Weekend, RASSON, EPBF, WPA и KLEMATCH", "path": "MARKETING/Brand_Logos_Guide.md", "kind": "brand-guide" },
+    { "id": "design-system", "label": "Weekend Billiard Presentation Design System v2", "path": "Tokens/DS_SYSTEM_PRESENTATION.md", "kind": "design-system" }
+  ],
+  "slides": [
+    {
+      "id": "cover-weekend",
+      "archetype": "cover-weekend",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Сразу показать конкретный стол внутри бренда Weekend и задать премиальный масштаб разговора.",
+      "sourceIds": ["info-site", "visual-catalog", "brand-guide"],
+      "copy": {
+        "eyebrow": "Weekend Billiard представляет",
+        "title": "RASSON Victory II Plus",
+        "titleAccent": "White",
+        "subtitle": "Высший класс в мире бильярда. Совершенство в каждом элементе."
+      },
+      "media": [
+        { "id": "cover-lounge", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/interior_dark_lounge_bar.jpeg", "sourcePath": "interior_dark_lounge_bar.jpeg", "alt": "Белый стол RASSON Victory II Plus в тёмном премиальном лаунже", "focalPoint": "center" },
+        { "id": "weekend-logo-dark", "kind": "logo", "role": "brand", "src": "/brand/weekend/weekend-base.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/weekend_svg_files/WEEKEND_LOGO_BASEVERSION.svg", "alt": "Weekend Billiard" }
+      ],
+      "badge": "Официальный дистрибьютор RASSON",
+      "params": [
+        { "label": "Игра", "value": "Американский пул" },
+        { "label": "Размер", "value": "9 футов" },
+        { "label": "Исполнение", "value": "White" }
+      ]
+    },
+    {
+      "id": "weekend-distributor",
+      "archetype": "distributor",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Снять риск покупки сложного профессионального оборудования через доверие к официальному дистрибьютору.",
+      "sourceIds": ["info-site", "legacy-copy", "visual-catalog", "brand-guide"],
+      "copy": {
+        "eyebrow": "Weekend Billiard",
+        "title": "Профессиональный стол требует профессионального сервиса",
+        "subtitle": "Официальная поставка RASSON в России — от выбора размера до точной установки игрового поля."
+      },
+      "media": [
+        { "id": "weekend-service-interior", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/interior_scandi_fireplace.jpeg", "sourcePath": "interior_scandi_fireplace.jpeg", "alt": "Victory II Plus White в светлом частном интерьере", "focalPoint": "center" }
+      ],
+      "metrics": [
+        { "value": "с 1996", "label": "на рынке бильярдного оборудования" },
+        { "value": "RASSON", "label": "официальная дистрибуция в России" }
+      ],
+      "features": [
+        { "title": "Подбор", "body": "Проверяем соответствие 9-футовой версии помещению и сценарию игры." },
+        { "title": "Доставка и сборка", "body": "Организуем профессиональную установку тяжёлого трёхсекционного сланца." },
+        { "title": "Сервис", "body": "Сохраняем единую ответственность за оборудование после монтажа." }
+      ]
+    },
+    {
+      "id": "rasson-brand",
+      "archetype": "brand-image",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Показать, что за выразительным дизайном стоит производитель промышленного масштаба.",
+      "sourceIds": ["info-site", "legacy-copy", "visual-catalog", "brand-guide"],
+      "copy": {
+        "eyebrow": "RASSON Billiards",
+        "title": "Инженерный масштаб, признанный во всём мире",
+        "body": "RASSON выпускает профессиональные столы для внутреннего рынка и экспорта, соединяя собственные технологии с требованиями международного спорта."
+      },
+      "media": [
+        { "id": "rasson-studio-table", "kind": "image", "role": "background", "src": "/decks/rasson-victory-ii-plus-white/assets/table_studio_3-4.jpeg", "sourcePath": "table_studio_3-4.jpeg", "alt": "Студийный ракурс RASSON Victory II Plus White", "focalPoint": "center" },
+        { "id": "rasson-logo", "kind": "logo", "role": "brand", "src": "/brand/rasson/rasson-billiards.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/rasson/rasson-billiards.svg", "alt": "RASSON Billiards" },
+        { "id": "weekend-logo-rasson", "kind": "logo", "role": "brand", "src": "/brand/weekend/weekend-03.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/weekend_svg_files/WEEKEND_LOGO_03.svg", "alt": "Weekend Billiard" }
+      ],
+      "metrics": [
+        { "value": "140 000 м²", "label": "площадь производства" },
+        { "value": "50 000+", "label": "столов ежегодно" },
+        { "value": "80+", "label": "стран поставки" }
+      ]
+    },
+    {
+      "id": "product-hero",
+      "archetype": "product-hero",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Зафиксировать образ White как архитектурного объекта и профессионального игрового оборудования одновременно.",
+      "sourceIds": ["info-site", "visual-catalog"],
+      "copy": {
+        "eyebrow": "Victory II Plus White",
+        "title": "Архитектура, построенная вокруг игры",
+        "subtitle": "Матовый белый корпус, чёрные борта и Tournament Blue подчёркивают силуэт, который узнаётся с любого ракурса."
+      },
+      "media": [
+        { "id": "product-studio", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/table_studio_3-4.jpeg", "sourcePath": "table_studio_3-4.jpeg", "alt": "Студийный ракурс RASSON Victory II Plus White три четверти", "focalPoint": "center" }
+      ],
+      "params": [
+        { "label": "Основа", "value": "3-секционный сланец" },
+        { "label": "Шары", "value": "57,2 мм" },
+        { "label": "Лузы", "value": "Drop pockets" }
+      ]
+    },
+    {
+      "id": "usp-v-leg",
+      "archetype": "usp",
+      "uspId": "v-leg",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Перевести фирменный V-силуэт из декоративного жеста в понятную пользу для игрока.",
+      "sourceIds": ["info-site", "complete-guide", "visual-catalog"],
+      "copy": {
+        "eyebrow": "Фирменная геометрия",
+        "title": "Свобода стойки без угловых ножек",
+        "subtitle": "Центральная V-образная опора освобождает пространство вокруг стола и формирует жёсткое основание."
+      },
+      "media": [
+        { "id": "v-base", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/table_pedestal_white_v_base.jpeg", "sourcePath": "table_pedestal_white_v_base.jpeg", "alt": "Белая V-образная опора Victory II Plus" },
+        { "id": "v-joint", "kind": "image", "role": "macro", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_pedestal_v_joint_macro.png", "sourcePath": "details/detail_pedestal_v_joint_macro.png", "alt": "Макро соединения лучей V-образной опоры" }
+      ],
+      "features": [
+        { "title": "Эргономика", "body": "Ноги игрока не упираются в традиционные угловые опоры при сложных ударах." },
+        { "title": "Жёсткость", "body": "Архитектура основания рассчитана на стабильность тяжёлой игровой конструкции." }
+      ]
+    },
+    {
+      "id": "usp-adamath",
+      "archetype": "usp",
+      "uspId": "adamath-wood",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Доказать, что премиальная поверхность рассчитана не только на вид, но и на интенсивную эксплуатацию.",
+      "sourceIds": ["info-site", "complete-guide", "visual-catalog"],
+      "copy": {
+        "eyebrow": "Adamath-Wood",
+        "title": "Борта сохраняют геометрию под нагрузкой",
+        "subtitle": "Термопрессованная древесина с фенольной смолой повышает устойчивость бортов к влаге, температурным перепадам, царапинам и деформации."
+      },
+      "media": [
+        { "id": "adamath-rail", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_sights_pearl_perspective.jpeg", "sourcePath": "details/detail_sights_pearl_perspective.jpeg", "alt": "Матовый чёрный борт Adamath-Wood с перламутровым прицелом" },
+        { "id": "adamath-corner", "kind": "image", "role": "support", "src": "/decks/rasson-victory-ii-plus-white/assets/table_corner_macro_side.jpeg", "sourcePath": "table_corner_macro_side.jpeg", "alt": "Боковой макро-ракурс борта и металлической угловой накладки", "focalPoint": "left center" },
+        { "id": "adamath-corner-top", "kind": "image", "role": "support", "src": "/decks/rasson-victory-ii-plus-white/assets/table_corner_macro_top.jpeg", "sourcePath": "table_corner_macro_top.jpeg", "alt": "Матовая хромированная угловая накладка с гравировкой RASSON" }
+      ],
+      "features": [
+        { "title": "Стабильность", "body": "Технология помогает бортам сохранять форму при длительной эксплуатации." },
+        { "title": "Защита поверхности", "body": "Материал рассчитан на влажность, температурные изменения и повседневные механические воздействия." }
+      ]
+    },
+    {
+      "id": "usp-klematch",
+      "archetype": "usp",
+      "uspId": "klematch-p59",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Связать качество отскока с конкретным профессиональным компонентом, а не с общей рекламной формулировкой.",
+      "sourceIds": ["info-site", "complete-guide", "visual-catalog", "brand-guide"],
+      "copy": {
+        "eyebrow": "KLEMATCH® P59",
+        "title": "Предсказуемый отскок начинается внутри борта",
+        "subtitle": "Французская бортовая резина из натурального серого каучука рассчитана на стабильную игровую реакцию."
+      },
+      "media": [
+        { "id": "klematch-section", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_rubber_klematch_p59.jpeg", "sourcePath": "details/detail_rubber_klematch_p59.jpeg", "alt": "Бортовая резина KLEMATCH P59 в разрезе" },
+        { "id": "klematch-logo", "kind": "logo", "role": "brand", "src": "/brand/klematch/klematch-logo.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/Klematch/Klematch_logo.svg", "alt": "KLEMATCH" }
+      ],
+      "features": [
+        { "title": "Материал", "body": "Натуральный серый каучук профессионального класса." },
+        { "title": "Профиль P59", "body": "Компонент выбран для точного и повторяемого отклика шара от борта." }
+      ],
+      "badges": [{ "label": "EPBF" }, { "label": "WPA" }]
+    },
+    {
+      "id": "usp-level-box",
+      "archetype": "usp",
+      "uspId": "level-box-plus",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Показать, как точность игрового поля обеспечивается конструкцией, а не только мастерством монтажника.",
+      "sourceIds": ["info-site", "complete-guide", "visual-catalog"],
+      "copy": {
+        "eyebrow": "Level Box Plus",
+        "title": "Плоскость поля настраивается по множеству точек",
+        "subtitle": "Система микрорегулировки встроена в подрамник и позволяет точно согласовать три секции сланца."
+      },
+      "media": [
+        { "id": "levelbox-frame", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/table_frame_levelbox_3-4.png", "sourcePath": "table_frame_levelbox_3-4.png", "alt": "Каркас Victory II Plus с системой Level Box Plus" },
+        { "id": "levelbox-top", "kind": "image", "role": "macro", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_levelbox_plus_top.jpeg", "sourcePath": "details/detail_levelbox_plus_top.jpeg", "alt": "Регулировочный узел Level Box Plus сверху" },
+        { "id": "levelbox-side", "kind": "image", "role": "macro", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_levelbox_plus_side.jpeg", "sourcePath": "details/detail_levelbox_plus_side.jpeg", "alt": "Регулировочный узел Level Box Plus сбоку" }
+      ],
+      "features": [
+        { "title": "Микроюстировка", "body": "Положение плит корректируется непосредственно на несущем каркасе." },
+        { "title": "Три секции", "body": "Настройка помогает убрать перепады на стыках сланцевого основания." }
+      ]
+    },
+    {
+      "id": "engineering-macro",
+      "archetype": "engineering",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Собрать скрытые детали в одно доказательство точности, тишины и долговечности.",
+      "sourceIds": ["info-site", "complete-guide", "visual-catalog"],
+      "copy": {
+        "eyebrow": "Инженерия в деталях",
+        "title": "Качество игры складывается из незаметных решений",
+        "subtitle": "Сланец, лузы, прицелы и силовые соединения работают как единая система."
+      },
+      "media": [
+        { "id": "engineering-slate", "kind": "image", "role": "macro", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_slate_3piece_slabs.jpeg", "sourcePath": "details/detail_slate_3piece_slabs.jpeg", "alt": "Три секции натурального сланца" },
+        { "id": "engineering-pocket", "kind": "image", "role": "macro", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_pocket_tpe_2-1.png", "sourcePath": "details/detail_pocket_tpe_2-1.png", "alt": "Луза из термопластичного эластомера" },
+        { "id": "engineering-sight", "kind": "image", "role": "macro", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_sights_pearl_macro.png", "sourcePath": "details/detail_sights_pearl_macro.png", "alt": "Перламутровый прицел на борту" },
+        { "id": "engineering-bracket", "kind": "image", "role": "macro", "src": "/decks/rasson-victory-ii-plus-white/assets/details/detail_frame_corner_bracket.jpg", "sourcePath": "details/detail_frame_corner_bracket.jpg", "alt": "Силовой угловой кронштейн рамы" }
+      ],
+      "features": [
+        { "title": "Натуральный сланец", "body": "Игровая основа состоит из трёх согласованных секций." },
+        { "title": "ТПЭ-лузы", "body": "Эластичный материал смягчает падение шара и снижает шум." },
+        { "title": "Перламутровые прицелы", "body": "Контрастные ориентиры встроены в линию борта." },
+        { "title": "Силовая рама", "body": "Металлические соединения поддерживают стабильную геометрию конструкции." }
+      ]
+    },
+    {
+      "id": "specs",
+      "archetype": "specs",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Дать клиенту ясную спецификацию 9-футовой версии без неподтверждённых характеристик.",
+      "sourceIds": ["info-site", "complete-guide", "legacy-copy", "visual-catalog"],
+      "copy": {
+        "eyebrow": "Конфигурации",
+        "title": "Спецификация 9-футовой версии",
+        "subtitle": "Подтверждённые характеристики модели Victory II Plus White для американского пула."
+      },
+      "media": [
+        { "id": "specs-side", "kind": "image", "role": "support", "src": "/decks/rasson-victory-ii-plus-white/assets/table_studio_side.png", "sourcePath": "table_studio_side.png", "alt": "Боковой профиль RASSON Victory II Plus White" }
+      ],
+      "options": [{ "id": "9ft", "label": "9 футов" }],
+      "rows": [
+        { "label": "Тип игры", "values": { "9ft": "Американский пул" } },
+        { "label": "Игровая основа", "values": { "9ft": "Натуральный сланец, 3 части" } },
+        { "label": "Толщина сланца", "values": { "9ft": "27 мм" } },
+        { "label": "Бортовая резина", "values": { "9ft": "KLEMATCH® P59" } },
+        { "label": "Диаметр шаров", "values": { "9ft": "57,2 мм" } },
+        { "label": "Лузы", "values": { "9ft": "Глухие, ТПЭ" } }
+      ]
+    },
+    {
+      "id": "championships",
+      "archetype": "championships",
+      "mandatory": false,
+      "enabled": true,
+      "narrativeJob": "Закрепить профессиональный статус через федерации и турниры, не используя старые низкокачественные афиши.",
+      "sourceIds": ["info-site", "complete-guide", "legacy-copy", "visual-catalog", "brand-guide"],
+      "copy": {
+        "eyebrow": "Профессиональное признание",
+        "title": "Столы RASSON работают там, где ошибка видна всему миру",
+        "subtitle": "Оборудование бренда одобрено EPBF и WPA и представлено на международных турнирах по пулу."
+      },
+      "media": [
+        { "id": "championship-arena", "kind": "image", "role": "background", "src": "/decks/rasson-victory-ii-plus-white/assets/tournament_hero_dark_arena.jpeg", "sourcePath": "tournament_hero_dark_arena.jpeg", "alt": "Стол RASSON на профессиональной турнирной арене", "focalPoint": "center" },
+        { "id": "epbf-logo", "kind": "logo", "role": "certification", "src": "/brand/epbf/epbf.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/European pocket billiard/European pocket billiard.svg", "alt": "EPBF" },
+        { "id": "wpa-logo", "kind": "logo", "role": "certification", "src": "/brand/wpa/wpa.png", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/World Pool Association/World_Pool_Association_idCsjZKm0e_0.png", "alt": "WPA" }
+      ],
+      "badges": [{ "label": "EPBF" }, { "label": "WPA" }],
+      "events": ["Mosconi Cup", "World Pool Masters", "Кубок Кремля"]
+    },
+    {
+      "id": "sport-gallery",
+      "archetype": "sport-gallery",
+      "mandatory": false,
+      "enabled": true,
+      "narrativeJob": "Показать стол Victory II Plus White в живом профессиональном контексте — с игроками, трансляцией и турнирным светом.",
+      "sourceIds": ["visual-catalog"],
+      "copy": {
+        "eyebrow": "Турнирная среда",
+        "title": "Когда каждый удар виден всем",
+        "subtitle": "Victory II Plus White в кадре профессиональной игры, премьер-лиги и телевизионной студии."
+      },
+      "media": [
+        { "id": "sport-cueing", "kind": "image", "role": "hero", "src": "/decks/rasson-victory-ii-plus-white/assets/tournament_match_pro_cueing.jpeg", "sourcePath": "tournament_match_pro_cueing.jpeg", "alt": "Игрок выполняет удар за столом RASSON Victory II Plus White" },
+        { "id": "sport-duo", "kind": "image", "role": "support", "src": "/decks/rasson-victory-ii-plus-white/assets/tournament_premier_league_duo.jpeg", "sourcePath": "tournament_premier_league_duo.jpeg", "alt": "Игроки Premier League Pool за белым столом RASSON" },
+        { "id": "sport-studio", "kind": "image", "role": "support", "src": "/decks/rasson-victory-ii-plus-white/assets/tournament_broadcast_studio.jpeg", "sourcePath": "tournament_broadcast_studio.jpeg", "alt": "Victory II Plus White в телевизионной турнирной студии" }
+      ]
+    },
+    {
+      "id": "closing-cta",
+      "archetype": "closing-cta",
+      "mandatory": true,
+      "enabled": true,
+      "narrativeJob": "Перевести впечатление от продукта в конкретный следующий шаг с Weekend Billiard.",
+      "sourceIds": ["info-site", "visual-catalog", "brand-guide"],
+      "copy": {
+        "eyebrow": "Weekend Billiard",
+        "title": "Подберём Victory II Plus под ваше пространство",
+        "subtitle": "Сверим размер помещения для 9-футовой версии и подготовим доставку с профессиональным монтажом."
+      },
+      "media": [
+        { "id": "closing-penthouse", "kind": "image", "role": "background", "src": "/decks/rasson-victory-ii-plus-white/assets/interior_penthouse_cityview.jpeg", "sourcePath": "interior_penthouse_cityview.jpeg", "alt": "Victory II Plus White в современном пентхаусе", "focalPoint": "center" },
+        { "id": "weekend-logo-closing", "kind": "logo", "role": "brand", "src": "/brand/weekend/weekend-base.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/weekend_svg_files/WEEKEND_LOGO_BASEVERSION.svg", "alt": "Weekend Billiard" }
+      ],
+      "features": [
+        { "title": "Проверим помещение", "body": "Уточним доступное игровое пространство и маршрут доставки." },
+        { "title": "Подтвердим конфигурацию", "body": "Согласуем 9-футовую версию с вашим сценарием игры." },
+        { "title": "Организуем монтаж", "body": "Соберём, выставим сланец и подготовим стол к игре." }
+      ],
+      "actions": [
+        { "label": "Позвонить консультанту", "href": "tel:+74997034393", "kind": "primary" },
+        { "label": "Написать на почту", "href": "mailto:opt@w-billiard.ru", "kind": "secondary" }
+      ],
+      "contacts": [
+        { "type": "phone", "label": "Телефон", "value": "+7 (499) 703-43-93", "href": "tel:+74997034393" },
+        { "type": "email", "label": "Email", "value": "opt@w-billiard.ru", "href": "mailto:opt@w-billiard.ru" },
+        { "type": "website", "label": "Сайт", "value": "weekend-billiard.ru", "href": "https://www.weekend-billiard.ru" }
+      ]
+    }
+  ]
+}

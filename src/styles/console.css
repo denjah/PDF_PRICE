@@ -1,0 +1,69 @@
+.wb-console-page { overflow: auto; }
+.wb-console-page #app { height: auto; min-height: 100%; }
+.wb-console { min-height: 100%; padding: clamp(24px, 4vw, 68px); color: var(--wb-color-text); background: var(--wb-color-page); }
+.wb-console__header, .wb-console__controls { display: flex; align-items: center; gap: 18px; }
+.wb-console__header { justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--wb-color-hairline); color: var(--wb-color-text-muted); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; }
+.wb-console__brand { color: var(--wb-color-title); text-decoration: none; }
+.wb-console__intro { max-width: 720px; margin: clamp(52px, 9vh, 120px) 0 32px; }
+.wb-console__intro h1 { margin: 0 0 16px; color: var(--wb-color-title); font-family: var(--wb-font-display); font-size: clamp(38px, 5vw, 72px); line-height: 1; }
+.wb-console__intro p { margin: 0; font-size: 17px; line-height: 1.55; }
+.wb-console__kicker { margin: 0 0 12px !important; color: var(--wb-color-accent); font-size: 11px !important; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+.wb-console__controls { flex-wrap: wrap; margin-bottom: 42px; }
+.wb-console__controls label { display: grid; gap: 7px; color: var(--wb-color-text-muted); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.wb-console__controls select, .wb-console__open { min-width: 158px; padding: 11px 12px; border: 1px solid var(--wb-color-hairline); color: var(--wb-color-title); background: var(--wb-color-surface); font: inherit; }
+.wb-console__open { align-self: end; color: var(--wb-color-black); background: var(--wb-color-accent); text-align: center; text-decoration: none; }
+.wb-token-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; border: 1px solid var(--wb-color-hairline); background: var(--wb-color-hairline); }
+.wb-token-swatch { min-height: 154px; padding: 14px; background: var(--wb-color-surface); }
+.wb-token-swatch__color { display: block; height: 76px; margin-bottom: 14px; border: 1px solid var(--wb-color-hairline); }
+.wb-token-swatch__name { display: block; margin-bottom: 5px; color: var(--wb-color-title); font-size: 13px; font-weight: 700; }
+.wb-token-swatch code { color: var(--wb-color-text-muted); font-family: var(--wb-font-body); font-size: 11px; }
+@media (max-width: 639px) { .wb-console { padding: 20px; } .wb-console__intro { margin-top: 54px; } .wb-console__intro p { font-size: 15px; } .wb-console__controls { align-items: stretch; } .wb-console__controls label, .wb-console__controls select, .wb-console__open { width: 100%; } }
+
+/* Live authoring workspace */
+.wb-console { display: grid; grid-template-columns: minmax(300px, 340px) minmax(0, 1fr); height: 100dvh; min-height: 0; padding: 0; overflow: hidden; }
+.wb-console-panel { display: flex; min-height: 0; flex-direction: column; overflow: auto; border-right: 1px solid var(--wb-color-hairline); background: var(--wb-color-surface); }
+.wb-console-panel__header, .wb-console-panel__section, .wb-console-panel__footer { padding-right: 22px; padding-left: 22px; }
+.wb-console-panel__header { display: flex; align-items: center; justify-content: space-between; min-height: 64px; border-bottom: 1px solid var(--wb-color-hairline); color: var(--wb-color-text-muted); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; }
+.wb-console-panel__header a { color: var(--wb-color-title); font-size: 11px; text-decoration: none; }
+.wb-console-panel__section { padding-top: 20px; }
+.wb-console-kicker { margin: 0 0 10px; color: var(--wb-color-accent); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.wb-console-panel h1 { margin: 0 0 12px; color: var(--wb-color-title); font-family: var(--wb-font-display); font-size: 36px; line-height: 0.96; }
+.wb-console-help { margin: 0; color: var(--wb-color-text-muted); font-size: 12px; line-height: 1.5; }
+.wb-console-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wb-console-controls label { display: grid; gap: 6px; color: var(--wb-color-text-muted); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.wb-console-controls select, .wb-console-save input, .wb-console-token input { width: 100%; border: 1px solid var(--wb-color-hairline); color: var(--wb-color-title); background: transparent; font: inherit; }
+.wb-console-controls select { color-scheme: dark; }
+.wb-console-controls select option { color: var(--wb-color-title); background: var(--wb-color-surface); }
+.wb-console-controls select { height: 34px; padding: 0 8px; }
+.wb-console-section-title { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--wb-color-title); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.wb-console-section-title button { padding: 0; border: 0; color: var(--wb-color-accent); background: transparent; font: inherit; cursor: pointer; }
+.wb-console-tokens { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.wb-console-token { display: grid; grid-template-columns: 22px 15px minmax(0, 1fr); align-items: center; gap: 5px; color: var(--wb-color-text-muted); font-size: 9px; text-transform: capitalize; }
+.wb-console-token__picker { width: 22px !important; height: 22px; padding: 0; cursor: pointer; }
+.wb-console-token__swatch { width: 15px; height: 15px; border: 1px solid var(--wb-color-hairline); }
+.wb-console-token input[data-wb-token-input] { grid-column: 1 / -1; height: 28px; padding: 0 6px; font-size: 10px; }
+.wb-console-save { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; }
+.wb-console-save input { min-width: 0; height: 34px; padding: 0 8px; }
+.wb-console-save button, .wb-console-presets button { border: 1px solid var(--wb-color-accent); color: var(--wb-color-black); background: var(--wb-color-accent); font: inherit; cursor: pointer; }
+.wb-console-save button { padding: 0 10px; font-size: 10px; font-weight: 700; }
+.wb-console-presets { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 10px; color: var(--wb-color-text-muted); font-size: 10px; }
+.wb-console-presets button { padding: 6px 8px; color: var(--wb-color-title); background: transparent; }
+.wb-console-panel__footer { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid var(--wb-color-hairline); color: var(--wb-color-text-muted); font-size: 10px; }
+.wb-console-panel__footer a { color: var(--wb-color-accent); font-weight: 700; text-decoration: none; }
+.wb-console-export { padding: 10px; border: 1px solid var(--wb-color-accent); color: var(--wb-color-black); background: var(--wb-color-accent); font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; }
+.wb-console-board { min-width: 0; min-height: 0; overflow: auto; padding: 18px; background: var(--wb-color-page); }
+.wb-console-board__top { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--wb-color-text-muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+.wb-console-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(280px, calc((100dvh - 84px) / 2)); gap: 12px; }
+.wb-console-card { display: grid; min-width: 0; min-height: 0; grid-template-rows: 24px minmax(0, 1fr); overflow: hidden; border: 1px solid var(--wb-color-hairline); background: var(--wb-color-black); }
+.wb-console-card > header { display: flex; justify-content: space-between; padding: 7px 9px; color: var(--wb-color-text-muted); background: var(--wb-color-surface); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.wb-console-stage { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: var(--wb-color-black); }
+.wb-console-canvas { position: absolute; top: 0; left: 0; width: 1440px; height: 810px; transform: scale(var(--wb-console-scale, 0.25)); transform-origin: top left; }
+.wb-console-canvas .wb-slide { width: 1440px; min-height: 810px; height: 810px; border-radius: 0; pointer-events: auto; }
+.wb-console-canvas .wb-slide__text { padding: 56px 72px; }
+.wb-console-canvas .wb-brand-story, .wb-console-canvas .wb-championship-copy, .wb-console-canvas .wb-closing-copy { width: 760px; min-height: 810px; padding: 56px 72px; }
+.wb-console-canvas .wb-anim { opacity: 1; transform: none; animation: none !important; }
+.wb-console-canvas .wb-editable-object { cursor: grab; outline: 0 solid transparent; transition: outline-color 120ms ease; }
+.wb-console-canvas .wb-editable-object:hover { outline: 2px dashed color-mix(in srgb, var(--wb-color-accent) 80%, transparent); outline-offset: 5px; }
+.wb-console-canvas .wb-editable-object.is-selected { cursor: grabbing; outline: 3px solid var(--wb-color-accent); outline-offset: 6px; }
+@media (max-width: 1040px) { .wb-console { grid-template-columns: 280px minmax(0, 1fr); } .wb-console-panel__header, .wb-console-panel__section, .wb-console-panel__footer { padding-right: 16px; padding-left: 16px; } .wb-console-grid { grid-template-columns: 1fr; grid-auto-rows: minmax(300px, 56vh); } }
+@media (max-width: 720px) { .wb-console { display: block; height: auto; overflow: visible; } .wb-console-panel { overflow: visible; border-right: 0; border-bottom: 1px solid var(--wb-color-hairline); } .wb-console-board { overflow: visible; } .wb-console-grid { grid-template-columns: 1fr; grid-auto-rows: 54vw; } }
