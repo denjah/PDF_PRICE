@@ -30,6 +30,7 @@
 .wb-console-panel h1 { margin: 0 0 12px; color: var(--wb-color-title); font-family: var(--wb-font-display); font-size: 36px; line-height: 0.96; }
 .wb-console-help { margin: 0; color: var(--wb-color-text-muted); font-size: 12px; line-height: 1.5; }
 .wb-console-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wb-console-controls__deck { grid-column: 1 / -1; }
 .wb-console-controls label { display: grid; gap: 6px; color: var(--wb-color-text-muted); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .wb-console-controls select, .wb-console-save input, .wb-console-token input { width: 100%; border: 1px solid var(--wb-color-hairline); color: var(--wb-color-title); background: transparent; font: inherit; }
 .wb-console-controls select { color-scheme: dark; }
@@ -51,6 +52,7 @@
 .wb-console-panel__footer { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid var(--wb-color-hairline); color: var(--wb-color-text-muted); font-size: 10px; }
 .wb-console-panel__footer a { color: var(--wb-color-accent); font-weight: 700; text-decoration: none; }
 .wb-console-export { padding: 10px; border: 1px solid var(--wb-color-accent); color: var(--wb-color-black); background: var(--wb-color-accent); font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; }
+.wb-console-export:disabled { color: var(--wb-color-text-muted); background: transparent; border-color: var(--wb-color-hairline); cursor: default; }
 .wb-console-board { min-width: 0; min-height: 0; overflow: auto; padding: 18px; background: var(--wb-color-page); }
 .wb-console-board__top { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--wb-color-text-muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
 .wb-console-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(280px, calc((100dvh - 84px) / 2)); gap: 12px; }

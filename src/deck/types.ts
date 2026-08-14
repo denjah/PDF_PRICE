@@ -103,12 +103,14 @@ interface BaseSlide<A extends SlideArchetype> {
   sourceIds: string[]
   copy: SlideCopy
   media: AssetRef[]
+  visualBrief?: string
   theme?: WbTheme
   variant?: WbVariant
 }
 
 export interface CoverSlide extends BaseSlide<'cover-weekend'> {
   badge: string
+  ghostLabel?: string
   params: Parameter[]
 }
 
@@ -126,7 +128,14 @@ export interface ProductHeroSlide extends BaseSlide<'product-hero'> {
 }
 
 export interface UspSlide extends BaseSlide<'usp'> {
-  uspId: 'v-leg' | 'adamath-wood' | 'klematch-p59' | 'level-box-plus'
+  uspId:
+    | 'v-leg'
+    | 'adamath-wood'
+    | 'klematch-p59'
+    | 'level-box-plus'
+    | 'mirror-finish'
+    | 'precision-play'
+    | 'commercial-ready'
   features: Feature[]
   badges?: Badge[]
 }
@@ -192,8 +201,16 @@ export interface DeckDefinition {
   variant: WbVariant
   materialsRoot: string
   assetRoot: string
+  downloadPath?: string
   product: ProductIdentity
   narrative: DeckNarrative
   sources: SourceRef[]
   slides: DeckSlide[]
+}
+
+export interface DeckCatalogItem {
+  slug: string
+  title: string
+  shortTitle: string
+  deck: DeckDefinition
 }

@@ -166,6 +166,14 @@ html[data-wb-variant="accent"] {
   --wb-color-text-muted: rgba(255, 255, 255, 0.40);
 }
 
+html[data-wb-deck="garlando-image"] {
+  --wb-color-accent: #c8a96b;
+  --wb-color-accent-2: #94a3ad;
+  --wb-color-brand-deep: #111417;
+  --wb-color-brand-soft: #eef0f1;
+  --wb-particle-hue: 200, 169, 107;
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root { --wb-motion: 0; }
 }

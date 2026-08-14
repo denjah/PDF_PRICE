@@ -18,6 +18,8 @@ import type {
   UspSlide,
 } from './types'
 
+const forceEagerImages = new URLSearchParams(window.location.search).get('pdf') === '1'
+
 const preventHangingShortWords = (value: string): string => {
   return value.replace(/(?<![\p{L}\p{N}])(?:([\p{L}\p{N}]{1,2})|([ВвКкСсУуОоАаИи]|[Нн]а|[Нн]е|[Оо]т|[Дд]о|[Пп]о|[Ии]з|[Зз]а|[Нн]о|[Тт]о|[Лл]и|[Дд]а|[Пп]од))\s+/gu, '$1$2\u00a0')
 }
@@ -44,11 +46,19 @@ const renderImage = (
     class="${escapeHtml(className)}"
     src="${escapeHtml(asset.src)}"
     alt="${escapeHtml(asset.alt)}"
-    loading="${eager ? 'eager' : 'lazy'}"
+    loading="${eager || forceEagerImages ? 'eager' : 'lazy'}"
     decoding="async"
     ${eager ? 'fetchpriority="high"' : ''}
     style="--wb-object-position: ${escapeHtml(asset.focalPoint ?? 'center')}"
   />
+`
+
+const renderPlaceholder = (slide: DeckSlide, className = ''): string => `
+  <div class="wb-media-placeholder ${escapeHtml(className)}" aria-label="Заглушка изображения">
+    <span>VISUAL · ${escapeHtml(slide.id)}</span>
+    <strong>${escapeHtml(slide.visualBrief ?? 'Зона будущего изображения')}</strong>
+    <i aria-hidden="true"></i>
+  </div>
 `
 
 const renderTitle = (slide: DeckSlide): string => {
@@ -124,7 +134,7 @@ const renderFrame = (slide: DeckSlide, body: string, media: string): string => `
     <div class="wb-slide__text">
       <div class="wb-slide__text-inner">${body}</div>
     </div>
-    <div class="wb-slide__media">${media}</div>
+    <div class="wb-slide__media">${media || renderPlaceholder(slide)}</div>
   </div>
   <span class="wb-corner wb-corner--tr" aria-hidden="true"></span>
   <span class="wb-corner wb-corner--bl" aria-hidden="true"></span>
@@ -144,7 +154,7 @@ const renderCover = (slide: CoverSlide): string => {
     ${renderParameters(slide.params)}
   `
   const media = hero ? `${renderImage(hero, 'wb-media-image', true)}<span class="wb-media-veil"></span>` : ''
-  return `${renderFrame(slide, body, media)}<span class="wb-ghost" aria-hidden="true">VICTORY</span>`
+  return `${renderFrame(slide, body, media)}<span class="wb-ghost" aria-hidden="true">${escapeHtml(slide.ghostLabel ?? 'VICTORY')}</span>`
 }
 
 const renderDistributor = (slide: DistributorSlide): string => {
@@ -171,7 +181,7 @@ const renderBrand = (slide: BrandImageSlide): string => {
     `
   }
   return `
-    ${hero ? `<div class="wb-full-media">${renderImage(hero, 'wb-media-image')}<span class="wb-full-media__veil"></span></div>` : ''}
+    ${hero ? `<div class="wb-full-media">${renderImage(hero, 'wb-media-image')}<span class="wb-full-media__veil"></span></div>` : `<div class="wb-full-media wb-full-media--placeholder">${renderPlaceholder(slide, 'wb-media-placeholder--full')}<span class="wb-full-media__veil"></span></div>`}
     <div class="wb-brand-story">
       ${logo ? `<div class="wb-brand-mark wb-anim">${renderImage(logo, 'wb-brand-mark__image')}</div>` : ''}
       ${renderTitle(slide)}
@@ -199,7 +209,7 @@ const renderUsp = (slide: UspSlide): string => {
   `
   const isMosaic = slide.id === 'usp-adamath' || slide.id === 'usp-level-box'
   const mosaicAssets = [hero, ...details].filter(Boolean) as AssetRef[]
-  const media = isMosaic ? `
+  const media = mosaicAssets.length === 0 ? renderPlaceholder(slide) : isMosaic ? `
     <div class="wb-usp-mosaic">
       ${[0, 1, 2, 3]
         .map((index) => {
@@ -227,7 +237,7 @@ const renderUsp = (slide: UspSlide): string => {
 
 const renderEngineering = (slide: EngineeringSlide): string => {
   const body = `${renderTitle(slide)}${renderFeatures(slide.features)}`
-  const media = `
+  const media = slide.media.length ? `
     <div class="wb-macro-grid">
       ${slide.media
         .map(
@@ -240,7 +250,7 @@ const renderEngineering = (slide: EngineeringSlide): string => {
         )
         .join('')}
     </div>
-  `
+  ` : renderPlaceholder(slide)
   return renderFrame(slide, body, media)
 }
 
@@ -279,7 +289,7 @@ const renderChampionships = (slide: ChampionshipsSlide): string => {
   const logos = slide.media.filter((asset) => asset.kind === 'logo')
   const events = `<div class="wb-event-list wb-anim">${slide.events.map((event) => `<span>${escapeHtml(event)}</span>`).join('')}</div>`
   return `
-    ${hero ? `<div class="wb-full-media">${renderImage(hero, 'wb-media-image')}<span class="wb-full-media__veil wb-full-media__veil--strong"></span></div>` : ''}
+    ${hero ? `<div class="wb-full-media">${renderImage(hero, 'wb-media-image')}<span class="wb-full-media__veil wb-full-media__veil--strong"></span></div>` : `<div class="wb-full-media wb-full-media--placeholder">${renderPlaceholder(slide, 'wb-media-placeholder--full')}<span class="wb-full-media__veil wb-full-media__veil--strong"></span></div>`}
     <div class="wb-championship-copy">
       ${renderTitle(slide)}
       <div class="wb-certifications wb-anim">${logos.map((logo) => renderImage(logo, 'wb-certification-logo')).join('')}</div>
@@ -293,13 +303,13 @@ const renderChampionships = (slide: ChampionshipsSlide): string => {
 
 const renderSportGallery = (slide: SportGallerySlide): string => `
   <div class="wb-sport-gallery">
-    ${slide.media.map((asset, index) => `<figure class="wb-sport-gallery__item wb-sport-gallery__item--${index + 1}">${renderImage(asset, 'wb-sport-gallery__image')}<figcaption>${escapeHtml(asset.alt)}</figcaption></figure>`).join('')}
+    ${slide.media.length ? slide.media.map((asset, index) => `<figure class="wb-sport-gallery__item wb-sport-gallery__item--${index + 1}">${renderImage(asset, 'wb-sport-gallery__image')}<figcaption>${escapeHtml(asset.alt)}</figcaption></figure>`).join('') : [1, 2, 3].map((index) => `<figure class="wb-sport-gallery__item wb-sport-gallery__item--${index}">${renderPlaceholder(slide, 'wb-media-placeholder--gallery')}</figure>`).join('')}
   </div>
   <div class="wb-sport-gallery__copy">${renderTitle(slide)}</div>
   <span class="wb-hairline-top" aria-hidden="true"></span><span class="wb-hairline-bottom" aria-hidden="true"></span>
 `
 
-const renderClosing = (slide: ClosingSlide): string => {
+const renderClosing = (slide: ClosingSlide, downloadPath?: string): string => {
   const hero = slide.media.find((asset) => asset.kind === 'image')
   const logo = slide.media.find((asset) => asset.kind === 'logo')
   const actions = `
@@ -307,6 +317,7 @@ const renderClosing = (slide: ClosingSlide): string => {
       ${slide.actions
         .map((action) => `<a class="wb-btn-cta wb-btn-cta--${action.kind}" href="${escapeHtml(action.href)}"><span>${escapeHtml(action.label)}</span></a>`)
         .join('')}
+      ${downloadPath ? `<a class="wb-btn-cta wb-btn-cta--pdf" href="${escapeHtml(downloadPath)}" download><span>Скачать PDF-презентацию</span></a>` : ''}
     </div>
   `
   const contacts = `
@@ -315,7 +326,7 @@ const renderClosing = (slide: ClosingSlide): string => {
     </address>
   `
   return `
-    ${hero ? `<div class="wb-full-media">${renderImage(hero, 'wb-media-image')}<span class="wb-full-media__veil wb-full-media__veil--closing"></span></div>` : ''}
+    ${hero ? `<div class="wb-full-media">${renderImage(hero, 'wb-media-image')}<span class="wb-full-media__veil wb-full-media__veil--closing"></span></div>` : `<div class="wb-full-media wb-full-media--placeholder">${renderPlaceholder(slide, 'wb-media-placeholder--full')}<span class="wb-full-media__veil wb-full-media__veil--closing"></span></div>`}
     <div class="wb-closing-copy">
       ${logo ? `<div class="wb-brand-mark wb-anim">${renderImage(logo, 'wb-brand-mark__image')}</div>` : ''}
       ${renderTitle(slide)}
@@ -328,7 +339,7 @@ const renderClosing = (slide: ClosingSlide): string => {
   `
 }
 
-const renderSlideContent = (slide: DeckSlide): string => {
+const renderSlideContent = (slide: DeckSlide, downloadPath?: string): string => {
   switch (slide.archetype) {
     case 'cover-weekend':
       return renderCover(slide)
@@ -349,11 +360,11 @@ const renderSlideContent = (slide: DeckSlide): string => {
     case 'sport-gallery':
       return renderSportGallery(slide)
     case 'closing-cta':
-      return renderClosing(slide)
+      return renderClosing(slide, downloadPath)
   }
 }
 
-export const renderDeckSlide = (slide: DeckSlide, index: number): string => `
+export const renderDeckSlide = (slide: DeckSlide, index: number, downloadPath?: string): string => `
   <section
     id="${escapeHtml(slide.id)}"
     class="wb-slide wb-slide--${escapeHtml(slide.archetype)} ${index % 2 === 1 && slide.archetype !== 'specs' ? 'wb-slide--reverse' : ''} wb-noise"
@@ -361,7 +372,7 @@ export const renderDeckSlide = (slide: DeckSlide, index: number): string => `
     data-wb-archetype="${escapeHtml(slide.archetype)}"
     aria-label="Слайд ${index + 1}: ${escapeHtml(slide.copy.title)}"
   >
-    ${renderSlideContent(slide)}
+    ${renderSlideContent(slide, downloadPath)}
   </section>
 `
 
@@ -375,12 +386,13 @@ export const mountDeck = (root: HTMLElement, deck: DeckDefinition): void => {
   assertDeck(deck)
   document.documentElement.dataset.wbTheme = deck.theme
   document.documentElement.dataset.wbVariant = deck.variant
+  document.documentElement.dataset.wbDeck = deck.slug
   document.title = `${deck.title} — Weekend Billiard`
 
   const slides = deck.slides.filter((slide) => slide.enabled)
   root.innerHTML = `
     <main class="wb-deck" aria-label="${escapeHtml(deck.title)}" tabindex="0">
-      ${slides.map(renderDeckSlide).join('')}
+      ${slides.map((slide, index) => renderDeckSlide(slide, index, deck.downloadPath)).join('')}
     </main>
     <nav class="wb-chrome" aria-label="Навигация по презентации">
       <div class="wb-theme-toggle" aria-label="Цветовая тема">

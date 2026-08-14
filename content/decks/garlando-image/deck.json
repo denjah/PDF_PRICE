@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "garlando-image",
+  "locale": "ru-RU",
+  "title": "GARLANDO Image",
+  "theme": "classic",
+  "variant": "light",
+  "materialsRoot": "D:/!PROJECTS/PDF PRICE/PHOTOBASE/GARLANDO",
+  "assetRoot": "/decks/garlando-image/assets",
+  "downloadPath": "/downloads/garlando-image.pdf",
+  "product": {
+    "brand": "GARLANDO", "model": "Image", "edition": "Mirror Finish", "game": "Настольный футбол",
+    "sizesFt": [], "articles": { "standard": "54.212.05.0" },
+    "manufacturer": "Garlando S.p.A., Италия", "distributor": "Weekend, Россия", "price": null
+  },
+  "narrative": {
+    "audience": "Частные заказчики, дизайнеры интерьеров, владельцы коммерческих пространств и дилеры игрового оборудования.",
+    "communicationJob": "Показать Garlando Image как выразительный предмет интерьера с профессиональной игровой механикой и перевести интерес в запрос на поставку.",
+    "centralTakeaway": "Garlando Image объединяет зеркальный итальянский дизайн, точную механику настольного футбола и сервис официального поставщика Weekend."
+  },
+  "sources": [
+    { "id": "presentation-copy", "label": "Garlando Image — подготовленные тексты презентации v2", "path": "MARKETING/Garlando_Image_Presentation_Texts_v2.md", "kind": "copy" },
+    { "id": "specification", "label": "Garlando Image — техническая спецификация", "path": "specification.md", "kind": "brief" },
+    { "id": "photo-audit", "label": "Аудит исходных фотографий Garlando Image", "path": "MARKETING/Garlando_Image_Photo_Audit.md", "kind": "visual-catalog" },
+    { "id": "design-system", "label": "Weekend Billiard Presentation Design System v2", "path": "Tokens/DS_SYSTEM_PRESENTATION.md", "kind": "design-system" }
+  ],
+  "slides": [
+    {
+      "id": "garlando-cover", "archetype": "cover-weekend", "mandatory": true, "enabled": true,
+      "narrativeJob": "Сразу представить модель как дизайнерский объект и задать премиальный итальянский тон.",
+      "sourceIds": ["presentation-copy", "specification"],
+      "copy": {
+        "eyebrow": "Настольный футбол · Made in Italy", "title": "GARLANDO", "titleAccent": "IMAGE",
+        "subtitle": "Игра как искусство. Зеркальное совершенство итальянского дизайна.",
+        "body": "Профессиональная механика настольного футбола в скульптурном корпусе, который становится центром пространства."
+      },
+      "media": [{ "id": "garlando-logo-cover", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-logo.png", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/Garlando/Garlando_logo_clean.png", "alt": "GARLANDO" }],
+      "visualBrief": "Предметный hero: стол целиком, зеркальный корпус, много воздуха", "badge": "Image · 54.212.05.0", "ghostLabel": "IMAGE",
+      "params": [
+        { "label": "Основание бренда", "value": "1954" }, { "label": "Габариты", "value": "143,7 × 76 см" }, { "label": "Вес", "value": "≈ 75,5 кг" }
+      ]
+    },
+    {
+      "id": "weekend-supplier", "archetype": "distributor", "mandatory": true, "enabled": true,
+      "narrativeJob": "Снять риск покупки через статус поставщика и сервис Weekend.", "sourceIds": ["presentation-copy"],
+      "copy": {
+        "eyebrow": "Weekend · официальный поставщик", "title": "GARLANDO в России — с полной поддержкой Weekend",
+        "subtitle": "Weekend сопровождает проект от выбора комплектации до доставки, настройки и дальнейшего сервиса."
+      },
+      "media": [], "visualBrief": "Архитектурный интерьер Weekend или аккуратная сервисная сцена",
+      "metrics": [
+        { "value": "1996", "label": "Weekend работает на рынке бильярда" }, { "value": "RU", "label": "официальные поставки GARLANDO" }, { "value": "360°", "label": "подбор, логистика, настройка и сервис" }
+      ],
+      "features": [
+        { "title": "Экспертиза", "body": "Оборудование ведущих мировых марок для частных и коммерческих проектов." },
+        { "title": "Партнёрство", "body": "Техническая поддержка престижных соревнований." },
+        { "title": "Сервис", "body": "Комплектующие, консультации и оперативная помощь." }
+      ]
+    },
+    {
+      "id": "garlando-heritage", "archetype": "brand-image", "mandatory": true, "enabled": true,
+      "narrativeJob": "Обосновать доверие к продукту через историю производства и международный статус бренда.", "sourceIds": ["presentation-copy"],
+      "copy": {
+        "eyebrow": "Итальянское мастерство", "title": "Семейная столярная традиция выросла в мировой бренд",
+        "subtitle": "Garlando ведёт историю от мастерской 1920-х годов и с 1954 года развивает производство настольного футбола в Италии."
+      },
+      "media": [{ "id": "garlando-logo-heritage", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-logo.png", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/Garlando/Garlando_logo_clean.png", "alt": "GARLANDO" }],
+      "visualBrief": "Итальянское производство: мастер, металл, стекло и точная сборка",
+      "metrics": [
+        { "value": "70+", "label": "лет опыта в игровом оборудовании" }, { "value": "2002", "label": "новый завод в Поццоло Формигаро" }, { "value": "ITSF", "label": "эксклюзивный партнёр-производитель" }
+      ]
+    },
+    {
+      "id": "garlando-product", "archetype": "product-hero", "mandatory": true, "enabled": true,
+      "narrativeJob": "Показать целостный образ модели до перехода к деталям конструкции.", "sourceIds": ["presentation-copy", "specification"],
+      "copy": {
+        "eyebrow": "GARLANDO Image", "title": "Зеркальный корпус превращает игру в часть архитектуры",
+        "subtitle": "Серебристая поверхность отражает свет и интерьер, а наклонные конусовидные ножки создают стремительный, устойчивый силуэт."
+      },
+      "media": [], "visualBrief": "Стол целиком в современной галерейной гостиной, ракурс 3/4",
+      "params": [
+        { "label": "Корпус", "value": "МДФ 25 мм" }, { "label": "Поле", "value": "Стекло 5 мм" }, { "label": "Штанги", "value": "Ø 16 мм · хром" }
+      ]
+    },
+    {
+      "id": "garlando-mirror-design", "archetype": "usp", "uspId": "mirror-finish", "mandatory": true, "enabled": true,
+      "narrativeJob": "Разложить визуальную ценность модели на конкретные материалы и детали.", "sourceIds": ["presentation-copy", "specification"],
+      "copy": {
+        "eyebrow": "Дизайн без компромиссов", "title": "Каждая поверхность работает на ощущение лёгкости",
+        "subtitle": "Хром, матовое стекло, зеркальная облицовка и венге создают строгую монохромную композицию с тёплым тактильным акцентом."
+      },
+      "media": [], "visualBrief": "Макро зеркального корпуса, кромки и рукоятки с натуральным венге",
+      "features": [
+        { "title": "Зеркальная облицовка", "body": "Корпус отражает окружение и визуально растворяется в пространстве." },
+        { "title": "Скульптурные ножки", "body": "HDP, армированный стекловолокном, обеспечивает выразительный силуэт и устойчивость." },
+        { "title": "Рукоятки с венге", "body": "Натуральное дерево добавляет комфорт хвата и тактильный контраст холодному металлу." }
+      ]
+    },
+    {
+      "id": "garlando-engineering", "archetype": "engineering", "mandatory": true, "enabled": true,
+      "narrativeJob": "Связать премиальный внешний вид с профессиональной игровой механикой.", "sourceIds": ["presentation-copy", "specification"],
+      "copy": {
+        "eyebrow": "Механика точной игры", "title": "Быстрый ход рождается в деталях, которых почти не замечаешь",
+        "subtitle": "Конструкция рассчитана на точный контроль мяча, плавное движение штанг и стабильность при интенсивной игре."
+      },
+      "media": [], "visualBrief": "Серия из четырёх честных макро: стекло, подшипник, штанга, фигурка",
+      "features": [
+        { "title": "Матовое стекло 5 мм", "body": "Пескоструйная обработка убирает блики и поддерживает предсказуемое сцепление мяча." },
+        { "title": "Роликовые подшипники", "body": "Стальной узел ускоряет ход и снижает нагрузку на запястья игроков." },
+        { "title": "Полые штанги Ø 16 мм", "body": "Хромированная сталь сочетает скорость, жёсткость и антикоррозийную защиту." },
+        { "title": "Литые фигурки", "body": "Белая и серая команды отлиты непосредственно на штанги из ударопрочного пластика." }
+      ]
+    },
+    {
+      "id": "garlando-specs", "archetype": "specs", "mandatory": true, "enabled": true,
+      "narrativeJob": "Дать проверяемую спецификацию модели без смешения базовой и опциональной комплектации.", "sourceIds": ["presentation-copy", "specification"],
+      "copy": {
+        "eyebrow": "Технические характеристики", "title": "Размеры и комплектация GARLANDO Image",
+        "subtitle": "Ширина зависит от выбранного типа штанг; телескопическая версия уменьшает габарит и повышает безопасность."
+      },
+      "media": [], "visualBrief": "Чистый боковой профиль стола для масштаба и размерных линий",
+      "options": [{ "id": "standard", "label": "Image" }],
+      "rows": [
+        { "label": "Габариты корпуса (Д × Ш)", "values": { "standard": "143,7 × 76 см" } }, { "label": "Регулируемая высота", "values": { "standard": "88–91 см" } },
+        { "label": "Ширина со сквозными штангами", "values": { "standard": "125 см" } }, { "label": "Ширина с телескопическими штангами", "values": { "standard": "110 см" } },
+        { "label": "Вес", "values": { "standard": "≈ 75,5 кг" } }, { "label": "Игровое поле", "values": { "standard": "Закалённое стекло 5 мм" } },
+        { "label": "Комплектация", "values": { "standard": "10 мячей" } }, { "label": "Производство / стандарт", "values": { "standard": "Италия / EN" } }
+      ]
+    },
+    {
+      "id": "garlando-world-stage", "archetype": "championships", "mandatory": true, "enabled": true,
+      "narrativeJob": "Закрепить профессиональный статус бренда международным спортивным контекстом.", "sourceIds": ["presentation-copy"],
+      "copy": {
+        "eyebrow": "GARLANDO на мировой арене", "title": "Тот же инженерный язык работает на официальных турнирах",
+        "subtitle": "Garlando — эксклюзивный партнёр-производитель ITSF; столы бренда используются на чемпионатах мира, Европы и крупных международных соревнованиях."
+      },
+      "media": [], "visualBrief": "Современная арена настольного футбола с драматичным светом и узнаваемым столом",
+      "badges": [{ "label": "ITSF" }, { "label": "EN" }, { "label": "Made in Italy" }],
+      "events": ["World Championships", "European Championships", "International tournaments"]
+    },
+    {
+      "id": "garlando-commercial", "archetype": "usp", "uspId": "commercial-ready", "mandatory": true, "enabled": true,
+      "narrativeJob": "Перевести характеристики продукта в выгоды для коммерческого объекта.", "sourceIds": ["presentation-copy", "specification"],
+      "copy": {
+        "eyebrow": "Для коммерческих пространств", "title": "Image выдерживает ежедневную игру и не выглядит служебным инвентарём",
+        "subtitle": "Модель подходит для отелей, ресторанов, офисов, клубов и SPA — там, где дизайн пространства так же важен, как надёжность оборудования."
+      },
+      "media": [], "visualBrief": "Премиальный гостиничный lobby или lounge с активной, но естественной игрой",
+      "features": [
+        { "title": "Регулярная нагрузка", "body": "Армированные ножки, корпус 25 мм и закалённое стекло рассчитаны на интенсивное использование." },
+        { "title": "Простое обслуживание", "body": "Зеркальная поверхность легко очищается, а хромированные штанги защищены от коррозии." },
+        { "title": "Безопасная конфигурация", "body": "Телескопические штанги не выходят с противоположной стороны — важно для семейных пространств." },
+        { "title": "Сервис Weekend", "body": "Поставка нескольких столов, настройка, комплектующие и единая ответственность за объект." }
+      ]
+    },
+    {
+      "id": "garlando-spaces", "archetype": "sport-gallery", "mandatory": false, "enabled": true,
+      "narrativeJob": "Показать универсальность модели через разные типы пространств.", "sourceIds": ["presentation-copy"],
+      "copy": {
+        "eyebrow": "Один объект — разные сценарии", "title": "От частной гостиной до клубного lounge",
+        "subtitle": "Зеркально-серебристая палитра поддерживает современный, классический и индустриальный интерьер, не требуя отдельной игровой комнаты."
+      },
+      "media": [], "visualBrief": "Три контекста: резиденция, отель, современный офис"
+    },
+    {
+      "id": "garlando-client-cta", "archetype": "closing-cta", "mandatory": true, "enabled": true,
+      "narrativeJob": "Перевести интерес частного или корпоративного заказчика в расчёт проекта.", "sourceIds": ["presentation-copy", "specification"],
+      "copy": {
+        "eyebrow": "Проект поставки для вашего пространства", "title": "Подберём GARLANDO Image под интерьер и сценарий игры",
+        "subtitle": "Проверим размещение, согласуем тип штанг и комплектацию, рассчитаем стоимость с доставкой и настройкой."
+      },
+      "media": [{ "id": "weekend-logo-client", "kind": "logo", "role": "brand", "src": "/brand/weekend/weekend-base.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/weekend_svg_files/WEEKEND_LOGO_BASEVERSION.svg", "alt": "Weekend Billiard" }],
+      "visualBrief": "Финальный интерьерный hero: Garlando Image в пространстве клиента",
+      "features": [
+        { "title": "Проверим размещение", "body": "Учтём корпус, рабочую ширину штанг и комфортные проходы вокруг стола." },
+        { "title": "Согласуем комплектацию", "body": "Выберем сквозные или безопасные телескопические штанги и количество мячей." },
+        { "title": "Организуем поставку", "body": "Подготовим доставку, сборку, настройку и сервисную поддержку." }
+      ],
+      "actions": [
+        { "label": "Получить расчёт для объекта", "href": "mailto:info@w-billiard.ru?subject=Расчёт GARLANDO Image", "kind": "primary" },
+        { "label": "Позвонить консультанту", "href": "tel:+74997034393", "kind": "secondary" }
+      ],
+      "contacts": [
+        { "type": "phone", "label": "Телефон", "value": "+7 (499) 703-43-93", "href": "tel:+74997034393" },
+        { "type": "email", "label": "Email", "value": "info@w-billiard.ru", "href": "mailto:info@w-billiard.ru" },
+        { "type": "website", "label": "Компания", "value": "Weekend", "href": "https://www.weekend-billiard.ru" }
+      ]
+    },
+    {
+      "id": "garlando-dealer-cta", "archetype": "closing-cta", "mandatory": false, "enabled": true,
+      "narrativeJob": "Дать дилеру отдельный и недвусмысленный следующий шаг.", "sourceIds": ["presentation-copy"],
+      "copy": {
+        "eyebrow": "Партнёрство с Weekend", "title": "Обсудим дилерские условия поставки GARLANDO",
+        "subtitle": "Подготовим предложение, уточним наличие модели, закупочные условия, логистику и поддержку дальнейших продаж."
+      },
+      "media": [{ "id": "garlando-logo-dealer", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-logo.png", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/Garlando/Garlando_logo_clean.png", "alt": "GARLANDO" }],
+      "visualBrief": "Чистая деловая композиция: несколько столов или шоурум партнёра",
+      "features": [
+        { "title": "Коммерческое предложение", "body": "Зафиксируем модель, объём, доступность и условия закупки." },
+        { "title": "Логистика", "body": "Согласуем сроки, маршрут и требования к приёмке оборудования." },
+        { "title": "Поддержка продаж", "body": "Предоставим материалы и продуктовую консультацию для вашей команды." }
+      ],
+      "actions": [
+        { "label": "Запросить дилерские условия", "href": "mailto:opt@w-billiard.ru?subject=Дилерские условия GARLANDO", "kind": "primary" },
+        { "label": "Позвонить", "href": "tel:+74997034393", "kind": "secondary" }
+      ],
+      "contacts": [
+        { "type": "phone", "label": "Телефон", "value": "+7 (499) 703-43-93", "href": "tel:+74997034393" },
+        { "type": "email", "label": "Email", "value": "opt@w-billiard.ru", "href": "mailto:opt@w-billiard.ru" },
+        { "type": "website", "label": "Компания", "value": "Weekend", "href": "https://www.weekend-billiard.ru" }
+      ]
+    }
+  ]
+}

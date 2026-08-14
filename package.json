@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "export:pdf": "npm run build && node scripts/export-pdf.mjs",
+    "export:garlando": "npm run export:pdf -- --deck garlando-image",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -13,4 +15,3 @@
     "vite": "^7.1.1"
   }
 }
-

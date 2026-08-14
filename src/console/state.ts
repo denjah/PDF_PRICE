@@ -32,8 +32,10 @@ export interface PresentationPreset extends PresentationDraft {
   createdAt: string
 }
 
-const draftKey = 'wb-presentation-draft-v1'
-const presetsKey = 'wb-presentation-presets-v1'
+const legacyDraftKey = 'wb-presentation-draft-v1'
+const legacyPresetsKey = 'wb-presentation-presets-v1'
+const draftKey = (deckSlug: string): string => `wb-presentation-draft-v2:${deckSlug}`
+const presetsKey = (deckSlug: string): string => `wb-presentation-presets-v2:${deckSlug}`
 
 const parse = <T>(value: string | null, fallback: T): T => {
   try {
@@ -43,30 +45,42 @@ const parse = <T>(value: string | null, fallback: T): T => {
   }
 }
 
-export const readDraft = (): PresentationDraft | null => {
-  try { return parse<PresentationDraft | null>(localStorage.getItem(draftKey), null) } catch { return null }
+export const readDraft = (deckSlug: string): PresentationDraft | null => {
+  try {
+    const stored = localStorage.getItem(draftKey(deckSlug))
+    if (stored) return parse<PresentationDraft | null>(stored, null)
+    return deckSlug === 'rasson-victory-ii-plus-white'
+      ? parse<PresentationDraft | null>(localStorage.getItem(legacyDraftKey), null)
+      : null
+  } catch { return null }
 }
 
-export const writeDraft = (draft: PresentationDraft): void => {
-  try { localStorage.setItem(draftKey, JSON.stringify(draft)) } catch { /* browser storage may be disabled */ }
+export const writeDraft = (deckSlug: string, draft: PresentationDraft): void => {
+  try { localStorage.setItem(draftKey(deckSlug), JSON.stringify(draft)) } catch { /* browser storage may be disabled */ }
 }
 
-export const readPresets = (): PresentationPreset[] => {
-  try { return parse<PresentationPreset[]>(localStorage.getItem(presetsKey), []) } catch { return [] }
+export const readPresets = (deckSlug: string): PresentationPreset[] => {
+  try {
+    const stored = localStorage.getItem(presetsKey(deckSlug))
+    if (stored) return parse<PresentationPreset[]>(stored, [])
+    return deckSlug === 'rasson-victory-ii-plus-white'
+      ? parse<PresentationPreset[]>(localStorage.getItem(legacyPresetsKey), [])
+      : []
+  } catch { return [] }
 }
 
-export const writePresets = (presets: PresentationPreset[]): void => {
-  try { localStorage.setItem(presetsKey, JSON.stringify(presets)) } catch { /* browser storage may be disabled */ }
+export const writePresets = (deckSlug: string, presets: PresentationPreset[]): void => {
+  try { localStorage.setItem(presetsKey(deckSlug), JSON.stringify(presets)) } catch { /* browser storage may be disabled */ }
 }
 
-export const savePreset = (name: string, draft: PresentationDraft): PresentationPreset => {
+export const savePreset = (deckSlug: string, name: string, draft: PresentationDraft): PresentationPreset => {
   const preset: PresentationPreset = {
     ...draft,
     id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
     name: name.trim() || 'Новый пресет',
     createdAt: new Date().toISOString(),
   }
-  writePresets([...readPresets(), preset])
+  writePresets(deckSlug, [...readPresets(deckSlug), preset])
   return preset
 }
 

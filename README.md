@@ -21,14 +21,29 @@ npm run build
 
 ## Preview themes
 
-- Deck: `http://127.0.0.1:4173/`
-- Theme inspector: `http://127.0.0.1:4173/console/`
-- Direct preview example: `http://127.0.0.1:4173/?theme=home&variant=light`
+- RASSON deck: `http://127.0.0.1:4173/?deck=rasson-victory-ii-plus-white`
+- GARLANDO deck: `http://127.0.0.1:4173/?deck=garlando-image`
+- Constructor: `http://127.0.0.1:4173/console/?deck=garlando-image`
+- Direct preview example: `http://127.0.0.1:4173/?deck=garlando-image&theme=classic&variant=light`
 
 The console is a local authoring workspace. It shows a 2×2 board of real slide
 previews, switches `data-wb-theme` and `data-wb-variant`, edits resolved
 `--wb-color-*` values, saves named presets, and remembers object positions in
 the current browser profile.
+
+The presentation selector in the constructor changes the active deck through
+the `deck` query parameter. Draft colors, object positions, and named presets
+are stored in `localStorage` under deck-specific keys, so editing one deck does
+not affect another.
+
+## PDF export
+
+```bash
+npm run export:pdf -- --deck rasson-victory-ii-plus-white
+npm run export:garlando
+```
+
+Each export is written to `public/downloads/<deck-slug>.pdf`.
 
 ## Slice 1
 

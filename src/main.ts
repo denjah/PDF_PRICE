@@ -3,9 +3,9 @@ import './styles/deck.css'
 import './styles/components.css'
 import './styles/console.css'
 
-import deckData from '../content/decks/rasson-victory-ii-plus-white/deck.json'
 import { applyColors, applyPositions, clearColors, readDraft } from './console/state'
 import { mountWorkspace } from './console/workspace'
+import { deckCatalog, resolveDeck } from './deck/catalog'
 import { mountDeck } from './deck/render'
 import type { DeckDefinition, WbTheme, WbVariant } from './deck/types'
 
@@ -15,11 +15,14 @@ if (!app) {
   throw new Error('App root was not found')
 }
 
-const deck = deckData as DeckDefinition
 const params = new URLSearchParams(window.location.search)
+const selectedDeck = resolveDeck(params.get('deck'))
+const deck = selectedDeck.deck
+const isPdfRender = params.get('pdf') === '1'
+const pdfSlideId = params.get('slide')
 const themes: WbTheme[] = ['home', 'sport', 'classic', 'club']
 const variants: WbVariant[] = ['dark', 'light', 'accent']
-const savedDraft = readDraft()
+const savedDraft = readDraft(deck.slug)
 const theme = params.get('theme') as WbTheme
 const variant = params.get('variant') as WbVariant
 const previewDeck: DeckDefinition = {
@@ -29,12 +32,21 @@ const previewDeck: DeckDefinition = {
 }
 
 try {
+  document.documentElement.dataset.wbDeck = deck.slug
   if (window.location.pathname.replace(/\/+$/, '') === '/console') {
     document.body.classList.add('wb-console-page')
-    mountWorkspace(app, previewDeck)
+    mountWorkspace(app, previewDeck, deckCatalog)
   } else {
     document.body.classList.remove('wb-console-page')
+    document.body.classList.toggle('wb-pdf-render', isPdfRender)
+    document.body.classList.toggle('wb-pdf-slide', Boolean(pdfSlideId))
+    if (pdfSlideId) document.body.dataset.wbPdfSlide = pdfSlideId
     mountDeck(app, previewDeck)
+    if (pdfSlideId) {
+      app.querySelectorAll<HTMLElement>('.wb-slide').forEach((slide) => {
+        slide.hidden = slide.dataset.wbSlide !== pdfSlideId
+      })
+    }
     if (savedDraft) {
       clearColors()
       applyColors(savedDraft.colors)
@@ -48,10 +60,6 @@ try {
         })
       })
       applyPositions(app, savedDraft.positions)
-    }
-    if (params.get('print') === '1') {
-      document.body.classList.add('wb-print-mode')
-      window.setTimeout(() => window.print(), 600)
     }
   }
 } catch (error) {
