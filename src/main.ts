@@ -16,6 +16,59 @@ if (!app) {
   throw new Error('App root was not found')
 }
 
+const preloadImage = (src: string): Promise<void> => new Promise((resolve) => {
+  const image = new Image()
+  let settled = false
+  const finish = () => {
+    if (settled) return
+    settled = true
+    resolve()
+  }
+  image.onload = () => {
+    image.decode().catch(() => undefined).finally(finish)
+  }
+  image.onerror = finish
+  image.src = src
+  if (image.complete) image.onload?.(new Event('load'))
+})
+
+const mountDeckLoader = (target: HTMLElement, total: number) => {
+  target.innerHTML = `
+    <main class="wb-deck-loader" role="status" aria-live="polite">
+      <span class="wb-deck-loader__brand">WEEKEND BILLIARD</span>
+      <div class="wb-deck-loader__copy">
+        <strong>Готовим презентацию</strong>
+        <span>Загружаем фотографии и шрифты</span>
+      </div>
+      <div class="wb-deck-loader__track" aria-hidden="true"><i></i></div>
+      <span class="wb-deck-loader__count">0 / ${total}</span>
+    </main>
+  `
+  const bar = target.querySelector<HTMLElement>('.wb-deck-loader__track i')
+  const count = target.querySelector<HTMLElement>('.wb-deck-loader__count')
+  let complete = 0
+  return () => {
+    complete += 1
+    if (bar) bar.style.setProperty('--wb-loader-progress', String(complete / total))
+    if (count) count.textContent = `${complete} / ${total}`
+  }
+}
+
+const preloadDeck = async (target: HTMLElement, deck: DeckDefinition): Promise<void> => {
+  const sources = [...new Set(deck.slides
+    .filter((slide) => slide.enabled)
+    .flatMap((slide) => slide.media.map((asset) => asset.src)))]
+  const markLoaded = mountDeckLoader(target, sources.length)
+  const fontsReady = 'fonts' in document ? document.fonts.ready : Promise.resolve()
+  await Promise.all([
+    fontsReady,
+    Promise.all(sources.map(async (src) => {
+      await preloadImage(src)
+      markLoaded()
+    })),
+  ])
+}
+
 try {
   const params = new URLSearchParams(window.location.search)
   const selectedDeck = resolveDeck(params.get('deck'))
@@ -34,6 +87,8 @@ try {
   }
 
   document.documentElement.dataset.wbDeck = deck.slug
+  document.documentElement.dataset.wbTheme = previewDeck.theme
+  document.documentElement.dataset.wbVariant = previewDeck.variant
   if (window.location.pathname.replace(/\/+$/, '') === '/console') {
     document.body.classList.add('wb-console-page')
     mountWorkspace(app, previewDeck, deckCatalog)
@@ -42,6 +97,7 @@ try {
     document.body.classList.toggle('wb-pdf-render', isPdfRender)
     document.body.classList.toggle('wb-pdf-slide', Boolean(pdfSlideId))
     if (pdfSlideId) document.body.dataset.wbPdfSlide = pdfSlideId
+    if (!isPdfRender) await preloadDeck(app, previewDeck)
     mountDeck(app, previewDeck)
     if (pdfSlideId) {
       app.querySelectorAll<HTMLElement>('.wb-slide').forEach((slide) => {
