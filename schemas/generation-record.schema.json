@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pdf-price.local/schemas/generation-record.schema.json",
+  "title": "Generation history record",
+  "description": "One immutable JSONL record for an image-generation attempt. Canonical file: PHOTOBASE/<PRODUCT>/MARKETING/generation_history.jsonl.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "recordId", "productId", "recipeId", "shotId", "createdAt", "status", "engine", "promptSnapshot", "outputs"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "recordId": { "$ref": "#/$defs/id" },
+    "productId": { "$ref": "#/$defs/id" },
+    "recipeId": { "$ref": "#/$defs/id" },
+    "shotId": { "$ref": "#/$defs/id" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "status": {
+      "enum": ["planned", "submitted", "completed", "partially-completed", "failed", "cancelled"]
+    },
+    "engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "parameters"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "model": { "type": "string" },
+        "parameters": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "promptSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "blockVersions", "referenceAssetIds"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "negativeText": { "type": "string" },
+        "blockVersions": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        },
+        "referenceAssetIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["assetId", "relativePath", "status"],
+        "properties": {
+          "assetId": { "$ref": "#/$defs/id" },
+          "relativePath": { "$ref": "#/$defs/relativePath" },
+          "status": { "enum": ["new", "linked", "approved", "rejected", "missing"] },
+          "variant": { "type": "string" }
+        }
+      }
+    },
+    "notes": { "type": "string" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "allOf": [
+        { "not": { "pattern": "^[A-Za-z]:[\\\\/]" } },
+        { "not": { "pattern": "^[/\\\\]" } },
+        { "not": { "pattern": "(^|[/\\\\])\\.\\.([/\\\\]|$)" } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weekend-billiard.local/schemas/prompt-system.schema.json",
+  "title": "Weekend Billiard Prompt System",
+  "description": "Versioned reusable prompt blocks, engine adapters and draft recipes. Historical result prompts belong to generation_history.jsonl.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "productId", "updatedAt", "blocks", "engineProfiles", "recipes"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0" },
+    "productId": { "$ref": "#/$defs/id" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "blocks": { "type": "array", "items": { "$ref": "#/$defs/block" } },
+    "engineProfiles": { "type": "array", "items": { "$ref": "#/$defs/engineProfile" } },
+    "recipes": { "type": "array", "items": { "$ref": "#/$defs/recipe" } },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "minLength": 2 },
+    "blockRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blockId", "version"],
+      "properties": {
+        "blockId": { "$ref": "#/$defs/id" },
+        "version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blockId", "scope", "title", "version", "enabled", "language", "content", "sourceRefs"],
+      "properties": {
+        "blockId": { "$ref": "#/$defs/id" },
+        "scope": { "enum": ["global", "product", "category", "shot", "negative", "engine"] },
+        "title": { "type": "string", "minLength": 1 },
+        "version": { "type": "integer", "minimum": 1 },
+        "enabled": { "type": "boolean" },
+        "language": { "enum": ["en", "ru"] },
+        "content": { "type": "string", "minLength": 1 },
+        "categoryIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "sourceRefs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "notes": { "type": "string" }
+      }
+    },
+    "engineProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engineProfileId", "engine", "label", "enabled", "parameters"],
+      "properties": {
+        "engineProfileId": { "$ref": "#/$defs/id" },
+        "engine": { "type": "string", "minLength": 1 },
+        "model": { "type": "string" },
+        "label": { "type": "string", "minLength": 1 },
+        "enabled": { "type": "boolean" },
+        "prefix": { "type": "string" },
+        "suffix": { "type": "string" },
+        "parameters": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "recipe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recipeId", "shotId", "categoryId", "title", "status", "blockRefs", "engineProfileId", "referenceAssetIds", "compiledPrompt", "updatedAt"],
+      "properties": {
+        "recipeId": { "$ref": "#/$defs/id" },
+        "shotId": { "$ref": "#/$defs/id" },
+        "categoryId": { "$ref": "#/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["draft", "ready", "stale", "retired"] },
+        "blockRefs": { "type": "array", "items": { "$ref": "#/$defs/blockRef" }, "minItems": 1 },
+        "engineProfileId": { "$ref": "#/$defs/id" },
+        "referenceAssetIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "compiledPrompt": { "type": "string", "minLength": 1 },
+        "compiledAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

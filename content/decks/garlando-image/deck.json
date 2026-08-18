@@ -5,7 +5,7 @@
   "title": "GARLANDO Image",
   "theme": "classic",
   "variant": "light",
-  "materialsRoot": "D:/!PROJECTS/PDF PRICE/PHOTOBASE/GARLANDO",
+  "materialsRoot": "PHOTOBASE/GARLANDO",
   "assetRoot": "/decks/garlando-image/assets",
   "downloadPath": "/downloads/garlando-image.pdf",
   "product": {
@@ -32,10 +32,13 @@
       "copy": {
         "eyebrow": "Настольный футбол · Made in Italy", "title": "GARLANDO", "titleAccent": "IMAGE",
         "subtitle": "Игра как искусство. Зеркальное совершенство итальянского дизайна.",
-        "body": "Профессиональная механика настольного футбола в скульптурном корпусе, который становится центром пространства."
+        "body": "Точная игровая механика настольного футбола в скульптурном корпусе, который становится центром пространства."
       },
-      "media": [{ "id": "garlando-logo-cover", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-logo.png", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/Garlando/Garlando_logo_clean.png", "alt": "GARLANDO" }],
-      "visualBrief": "Предметный hero: стол целиком, зеркальный корпус, много воздуха", "badge": "Image · 54.212.05.0", "ghostLabel": "IMAGE",
+      "media": [
+        { "id": "garlando-cover-hero", "kind": "image", "role": "hero", "src": "/decks/garlando-image/assets/hero_dark_studio_wide.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/hero_dark_studio_wide.jpeg", "alt": "GARLANDO Image в тёмной студии, стол справа и свободное пространство слева", "focalPoint": "72% center" },
+        { "id": "garlando-logo-cover", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-black.svg", "sourcePath": "LOGO/Garlando/Garlando_black.svg", "alt": "GARLANDO" }
+      ],
+      "visualBrief": "Предметный hero: стол целиком, зеркальный корпус, много воздуха", "badge": "ПРЕДСТАВЛЯЕТ", "ghostLabel": "IMAGE",
       "params": [
         { "label": "Основание бренда", "value": "1954" }, { "label": "Габариты", "value": "143,7 × 76 см" }, { "label": "Вес", "value": "≈ 75,5 кг" }
       ]
@@ -47,9 +50,12 @@
         "eyebrow": "Weekend · официальный поставщик", "title": "GARLANDO в России — с полной поддержкой Weekend",
         "subtitle": "Weekend сопровождает проект от выбора комплектации до доставки, настройки и дальнейшего сервиса."
       },
-      "media": [], "visualBrief": "Архитектурный интерьер Weekend или аккуратная сервисная сцена",
+      "media": [
+        { "id": "garlando-supplier-showroom", "kind": "image", "role": "hero", "src": "/decks/garlando-image/assets/commercial_showroom_three_tables.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/commercial_showroom_three_tables.jpeg", "alt": "Шоурум с тремя столами GARLANDO Image", "focalPoint": "64% center" },
+        { "id": "weekend-logo-supplier", "kind": "logo", "role": "brand", "src": "/brand/weekend/weekend-03.svg", "sourcePath": "LOGO/weekend_svg_files/WEEKEND_LOGO_03.svg", "alt": "Weekend" }
+      ], "visualBrief": "Архитектурный интерьер Weekend или аккуратная сервисная сцена",
       "metrics": [
-        { "value": "1996", "label": "Weekend работает на рынке бильярда" }, { "value": "RU", "label": "официальные поставки GARLANDO" }, { "value": "360°", "label": "подбор, логистика, настройка и сервис" }
+        { "value": "1996", "label": "Weekend работает на рынке игрового оборудования" }, { "value": "RU", "label": "официальные поставки GARLANDO" }, { "value": "360°", "label": "подбор, логистика, настройка и сервис" }
       ],
       "features": [
         { "title": "Экспертиза", "body": "Оборудование ведущих мировых марок для частных и коммерческих проектов." },
@@ -64,7 +70,10 @@
         "eyebrow": "Итальянское мастерство", "title": "Семейная столярная традиция выросла в мировой бренд",
         "subtitle": "Garlando ведёт историю от мастерской 1920-х годов и с 1954 года развивает производство настольного футбола в Италии."
       },
-      "media": [{ "id": "garlando-logo-heritage", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-logo.png", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/Garlando/Garlando_logo_clean.png", "alt": "GARLANDO" }],
+      "media": [
+        { "id": "garlando-heritage-workshop", "kind": "image", "role": "hero", "src": "/decks/garlando-image/assets/editorial_factory_assembly.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/editorial_factory_assembly.jpeg", "alt": "Сборка игрового стола в производственной мастерской", "focalPoint": "63% center" },
+        { "id": "garlando-logo-heritage", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-black.svg", "sourcePath": "LOGO/Garlando/Garlando_black.svg", "alt": "GARLANDO" }
+      ],
       "visualBrief": "Итальянское производство: мастер, металл, стекло и точная сборка",
       "metrics": [
         { "value": "70+", "label": "лет опыта в игровом оборудовании" }, { "value": "2002", "label": "новый завод в Поццоло Формигаро" }, { "value": "ITSF", "label": "эксклюзивный партнёр-производитель" }
@@ -77,7 +86,7 @@
         "eyebrow": "GARLANDO Image", "title": "Зеркальный корпус превращает игру в часть архитектуры",
         "subtitle": "Серебристая поверхность отражает свет и интерьер, а наклонные конусовидные ножки создают стремительный, устойчивый силуэт."
       },
-      "media": [], "visualBrief": "Стол целиком в современной галерейной гостиной, ракурс 3/4",
+      "media": [{ "id": "garlando-product-white", "kind": "image", "role": "hero", "src": "/decks/garlando-image/assets/product_white_studio_full.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/product_white_studio_full.jpeg", "alt": "GARLANDO Image целиком на светлом студийном фоне", "focalPoint": "center" }], "visualBrief": "Стол целиком в современной галерейной гостиной, ракурс 3/4",
       "params": [
         { "label": "Корпус", "value": "МДФ 25 мм" }, { "label": "Поле", "value": "Стекло 5 мм" }, { "label": "Штанги", "value": "Ø 16 мм · хром" }
       ]
@@ -89,7 +98,11 @@
         "eyebrow": "Дизайн без компромиссов", "title": "Каждая поверхность работает на ощущение лёгкости",
         "subtitle": "Хром, матовое стекло, зеркальная облицовка и венге создают строгую монохромную композицию с тёплым тактильным акцентом."
       },
-      "media": [], "visualBrief": "Макро зеркального корпуса, кромки и рукоятки с натуральным венге",
+      "media": [
+        { "id": "garlando-mirror-glass", "kind": "image", "role": "hero", "src": "/decks/garlando-image/assets/detail_handle_glass_macro.jpg", "sourcePath": "PHOTOBASE/GARLANDO/detail_handle_glass_macro.jpg", "alt": "Рукоятка и отражение в стекле" },
+        { "id": "garlando-mirror-handle", "kind": "image", "role": "detail", "src": "/decks/garlando-image/assets/detail_handle_wood_inlay.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/detail_handle_wood_inlay.jpeg", "alt": "Рукоятка с деревянной вставкой венге" },
+        { "id": "garlando-mirror-bearing", "kind": "image", "role": "detail", "src": "/decks/garlando-image/assets/detail_rod_bearing_spring.png", "sourcePath": "PHOTOBASE/GARLANDO/detail_rod_bearing_spring.png", "alt": "Хромированная штанга, подшипник и пружина" }
+      ], "visualBrief": "Макро зеркального корпуса, кромки и рукоятки с натуральным венге",
       "features": [
         { "title": "Зеркальная облицовка", "body": "Корпус отражает окружение и визуально растворяется в пространстве." },
         { "title": "Скульптурные ножки", "body": "HDP, армированный стекловолокном, обеспечивает выразительный силуэт и устойчивость." },
@@ -100,15 +113,19 @@
       "id": "garlando-engineering", "archetype": "engineering", "mandatory": true, "enabled": true,
       "narrativeJob": "Связать премиальный внешний вид с профессиональной игровой механикой.", "sourceIds": ["presentation-copy", "specification"],
       "copy": {
-        "eyebrow": "Механика точной игры", "title": "Быстрый ход рождается в деталях, которых почти не замечаешь",
-        "subtitle": "Конструкция рассчитана на точный контроль мяча, плавное движение штанг и стабильность при интенсивной игре."
+        "eyebrow": "Механика точной игры", "title": "Точный контроль начинается с механики",
+        "subtitle": "Конструкция обеспечивает точный контроль мяча, плавное движение штанг и стабильность во время активной игры."
       },
-      "media": [], "visualBrief": "Серия из четырёх честных макро: стекло, подшипник, штанга, фигурка",
+      "media": [
+        { "id": "garlando-engineering-full-side", "kind": "image", "role": "support", "src": "/decks/garlando-image/assets/GARLANDO_full_product_view_side_202608181153.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/GARLANDO_full_product_view_side_202608181153.jpeg", "alt": "GARLANDO Image, полный боковой вид" },
+        { "id": "garlando-engineering-bearing", "kind": "image", "role": "macro", "src": "/decks/garlando-image/assets/detail_cutaway_bearing.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/detail_cutaway_bearing.jpeg", "alt": "Устройство подшипникового узла в разрезе" },
+        { "id": "garlando-engineering-playfield", "kind": "image", "role": "macro", "src": "/decks/garlando-image/assets/detail_playfield_ball_action.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/detail_playfield_ball_action.jpeg", "alt": "Игровое поле, мяч, штанги и фигурки" }
+      ], "visualBrief": "Серия из четырёх честных макро: стекло, подшипник, штанга, фигурка",
       "features": [
-        { "title": "Матовое стекло 5 мм", "body": "Пескоструйная обработка убирает блики и поддерживает предсказуемое сцепление мяча." },
-        { "title": "Роликовые подшипники", "body": "Стальной узел ускоряет ход и снижает нагрузку на запястья игроков." },
-        { "title": "Полые штанги Ø 16 мм", "body": "Хромированная сталь сочетает скорость, жёсткость и антикоррозийную защиту." },
-        { "title": "Литые фигурки", "body": "Белая и серая команды отлиты непосредственно на штанги из ударопрочного пластика." }
+        { "title": "Матовое стекло 5 мм", "body": "Пескоструйная обработка снижает блики и создаёт равномерную игровую поверхность." },
+        { "title": "Роликовые подшипники", "body": "Стальные роликовые элементы ускоряют движение штанг и снижают нагрузку на запястья игроков." },
+        { "title": "Полые штанги Ø 16 мм", "body": "Хромированные стальные штанги с толщиной стенки 2,2 мм устойчивы к нагрузке и защищены от коррозии." },
+        { "title": "Литые фигурки", "body": "Белая и серая команды выполнены из прочного пластика Moplen и отлиты непосредственно на штангах." }
       ]
     },
     {
@@ -118,7 +135,7 @@
         "eyebrow": "Технические характеристики", "title": "Размеры и комплектация GARLANDO Image",
         "subtitle": "Ширина зависит от выбранного типа штанг; телескопическая версия уменьшает габарит и повышает безопасность."
       },
-      "media": [], "visualBrief": "Чистый боковой профиль стола для масштаба и размерных линий",
+      "media": [{ "id": "garlando-specs-profile", "kind": "image", "role": "support", "src": "/decks/garlando-image/assets/product_white_studio_wide.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/product_white_studio_wide.jpeg", "alt": "GARLANDO Image на белом фоне, широкий ракурс", "focalPoint": "72% center" }], "visualBrief": "Чистый боковой профиль стола для масштаба и размерных линий",
       "options": [{ "id": "standard", "label": "Image" }],
       "rows": [
         { "label": "Габариты корпуса (Д × Ш)", "values": { "standard": "143,7 × 76 см" } }, { "label": "Регулируемая высота", "values": { "standard": "88–91 см" } },
@@ -134,7 +151,10 @@
         "eyebrow": "GARLANDO на мировой арене", "title": "Тот же инженерный язык работает на официальных турнирах",
         "subtitle": "Garlando — эксклюзивный партнёр-производитель ITSF; столы бренда используются на чемпионатах мира, Европы и крупных международных соревнованиях."
       },
-      "media": [], "visualBrief": "Современная арена настольного футбола с драматичным светом и узнаваемым столом",
+      "media": [
+        { "id": "garlando-world-stage-photo", "kind": "image", "role": "background", "src": "/decks/garlando-image/assets/action_tournament_duel_front.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/action_tournament_duel_front.jpeg", "alt": "Турнирный матч на столе GARLANDO", "focalPoint": "center" },
+        { "id": "garlando-logo-world-stage", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-red.svg", "sourcePath": "LOGO/Garlando/Garlando_red.svg", "alt": "GARLANDO" }
+      ], "visualBrief": "Современная арена настольного футбола с драматичным светом и узнаваемым столом",
       "badges": [{ "label": "ITSF" }, { "label": "EN" }, { "label": "Made in Italy" }],
       "events": ["World Championships", "European Championships", "International tournaments"]
     },
@@ -142,25 +162,20 @@
       "id": "garlando-commercial", "archetype": "usp", "uspId": "commercial-ready", "mandatory": true, "enabled": true,
       "narrativeJob": "Перевести характеристики продукта в выгоды для коммерческого объекта.", "sourceIds": ["presentation-copy", "specification"],
       "copy": {
-        "eyebrow": "Для коммерческих пространств", "title": "Image выдерживает ежедневную игру и не выглядит служебным инвентарём",
+        "eyebrow": "Для коммерческих пространств", "title": "GARLANDO Image становится частью интерьера",
         "subtitle": "Модель подходит для отелей, ресторанов, офисов, клубов и SPA — там, где дизайн пространства так же важен, как надёжность оборудования."
       },
-      "media": [], "visualBrief": "Премиальный гостиничный lobby или lounge с активной, но естественной игрой",
+      "media": [
+        { "id": "garlando-commercial-boutique", "kind": "image", "role": "detail", "src": "/decks/garlando-image/assets/lifestyle_boutique_hotel.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/lifestyle_boutique_hotel.jpeg", "alt": "Игра в boutique hotel", "focalPoint": "center" },
+        { "id": "garlando-commercial-gallery", "kind": "image", "role": "detail", "src": "/decks/garlando-image/assets/interior_art_gallery.png", "sourcePath": "PHOTOBASE/GARLANDO/interior_art_gallery.png", "alt": "GARLANDO Image в современной художественной галерее", "focalPoint": "center" },
+        { "id": "garlando-commercial-open-plan", "kind": "image", "role": "detail", "src": "/decks/garlando-image/assets/interior_open_plan_couple.png", "sourcePath": "PHOTOBASE/GARLANDO/interior_open_plan_couple.png", "alt": "Современный open-plan с парой игроков", "focalPoint": "center" }
+      ], "visualBrief": "Премиальный гостиничный lobby или lounge с активной, но естественной игрой",
       "features": [
-        { "title": "Регулярная нагрузка", "body": "Армированные ножки, корпус 25 мм и закалённое стекло рассчитаны на интенсивное использование." },
+        { "title": "Конструкция для регулярной игры", "body": "Армированные ножки, корпус 25 мм и закалённое стекло поддерживают устойчивость и долговечность при регулярном использовании." },
         { "title": "Простое обслуживание", "body": "Зеркальная поверхность легко очищается, а хромированные штанги защищены от коррозии." },
         { "title": "Безопасная конфигурация", "body": "Телескопические штанги не выходят с противоположной стороны — важно для семейных пространств." },
         { "title": "Сервис Weekend", "body": "Поставка нескольких столов, настройка, комплектующие и единая ответственность за объект." }
       ]
-    },
-    {
-      "id": "garlando-spaces", "archetype": "sport-gallery", "mandatory": false, "enabled": true,
-      "narrativeJob": "Показать универсальность модели через разные типы пространств.", "sourceIds": ["presentation-copy"],
-      "copy": {
-        "eyebrow": "Один объект — разные сценарии", "title": "От частной гостиной до клубного lounge",
-        "subtitle": "Зеркально-серебристая палитра поддерживает современный, классический и индустриальный интерьер, не требуя отдельной игровой комнаты."
-      },
-      "media": [], "visualBrief": "Три контекста: резиденция, отель, современный офис"
     },
     {
       "id": "garlando-client-cta", "archetype": "closing-cta", "mandatory": true, "enabled": true,
@@ -169,7 +184,10 @@
         "eyebrow": "Проект поставки для вашего пространства", "title": "Подберём GARLANDO Image под интерьер и сценарий игры",
         "subtitle": "Проверим размещение, согласуем тип штанг и комплектацию, рассчитаем стоимость с доставкой и настройкой."
       },
-      "media": [{ "id": "weekend-logo-client", "kind": "logo", "role": "brand", "src": "/brand/weekend/weekend-base.svg", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/weekend_svg_files/WEEKEND_LOGO_BASEVERSION.svg", "alt": "Weekend Billiard" }],
+      "media": [
+        { "id": "garlando-client-interior", "kind": "image", "role": "background", "src": "/decks/garlando-image/assets/lifestyle_hotel_lounge_guests.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/lifestyle_hotel_lounge_guests.jpeg", "alt": "Гости играют на GARLANDO Image в премиальном гостиничном lounge", "focalPoint": "56% center" },
+        { "id": "weekend-logo-client", "kind": "logo", "role": "brand", "src": "/brand/weekend/weekend-base.svg", "sourcePath": "LOGO/weekend_svg_files/WEEKEND_LOGO_BASEVERSION.svg", "alt": "Weekend Billiard" }
+      ],
       "visualBrief": "Финальный интерьерный hero: Garlando Image в пространстве клиента",
       "features": [
         { "title": "Проверим размещение", "body": "Учтём корпус, рабочую ширину штанг и комфортные проходы вокруг стола." },
@@ -193,7 +211,10 @@
         "eyebrow": "Партнёрство с Weekend", "title": "Обсудим дилерские условия поставки GARLANDO",
         "subtitle": "Подготовим предложение, уточним наличие модели, закупочные условия, логистику и поддержку дальнейших продаж."
       },
-      "media": [{ "id": "garlando-logo-dealer", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-logo.png", "sourcePath": "D:/!PROJECTS/PDF PRICE/LOGO/Garlando/Garlando_logo_clean.png", "alt": "GARLANDO" }],
+      "media": [
+        { "id": "garlando-dealer-lounge", "kind": "image", "role": "background", "src": "/decks/garlando-image/assets/lifestyle_executive_lounge.jpeg", "sourcePath": "PHOTOBASE/GARLANDO/lifestyle_executive_lounge.jpeg", "alt": "Игровая зона GARLANDO Image в представительском lounge", "focalPoint": "54% center" },
+        { "id": "garlando-logo-dealer", "kind": "logo", "role": "brand", "src": "/brand/garlando/garlando-black.svg", "sourcePath": "LOGO/Garlando/Garlando_black.svg", "alt": "GARLANDO" }
+      ],
       "visualBrief": "Чистая деловая композиция: несколько столов или шоурум партнёра",
       "features": [
         { "title": "Коммерческое предложение", "body": "Зафиксируем модель, объём, доступность и условия закупки." },

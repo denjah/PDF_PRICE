@@ -5,12 +5,14 @@ import type { DeckCatalogItem, DeckDefinition } from './types'
 export const deckCatalog: DeckCatalogItem[] = [
   {
     slug: 'rasson-victory-ii-plus-white',
+    productId: 'rasson-victory-ii-plus-white',
     title: 'RASSON Victory II Plus White',
     shortTitle: 'RASSON Victory II+',
     deck: rassonVictoryData as DeckDefinition,
   },
   {
     slug: 'garlando-image',
+    productId: 'garlando',
     title: 'GARLANDO Image',
     shortTitle: 'GARLANDO Image',
     deck: garlandoImageData as DeckDefinition,
@@ -19,5 +21,9 @@ export const deckCatalog: DeckCatalogItem[] = [
 
 export const defaultDeck = deckCatalog[0]
 
-export const resolveDeck = (slug: string | null): DeckCatalogItem =>
-  deckCatalog.find((item) => item.slug === slug) ?? defaultDeck
+export const resolveDeck = (slug: string | null): DeckCatalogItem => {
+  if (!slug) return defaultDeck
+  const match = deckCatalog.find((item) => item.slug === slug)
+  if (!match) throw new Error(`Unknown presentation: ${slug}`)
+  return match
+}

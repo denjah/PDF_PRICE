@@ -1,4 +1,8 @@
 node_modules/
 dist/
 *.local
-
+.cache/
+.pdf-render/
+QA/console/
+*.local.json
+*.tmp

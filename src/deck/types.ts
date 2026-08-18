@@ -210,6 +210,7 @@ export interface DeckDefinition {
 
 export interface DeckCatalogItem {
   slug: string
+  productId: string
   title: string
   shortTitle: string
   deck: DeckDefinition

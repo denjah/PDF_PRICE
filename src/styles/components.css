@@ -23,7 +23,13 @@
   font-size: clamp(40px, 4.6vw, 68px);
 }
 
-.wb-slide--cover-weekend .wb-badge { margin-bottom: 18px; }
+.wb-slide--cover-weekend .wb-badge {
+  margin-bottom: 18px;
+  color: var(--wb-color-title);
+  background: transparent;
+  border: 1px solid var(--wb-color-hairline);
+  clip-path: none;
+}
 .wb-slide--cover-weekend .wb-eyebrow { margin-bottom: 20px; }
 
 .wb-slide--cover-weekend .wb-slide__grid {
@@ -149,6 +155,9 @@
 html[data-wb-variant="light"] .wb-brand-mark__image[src*="weekend-base"] { filter: none; }
 html[data-wb-variant="light"] .wb-brand-mark__image[src*="garlando-logo"] { mix-blend-mode: multiply; }
 html:not([data-wb-variant="light"]) .wb-brand-mark__image[src*="garlando-logo"] { filter: brightness(0) invert(1); mix-blend-mode: screen; }
+.wb-theme-logo--light { display: none; }
+html:not([data-wb-variant="light"]) .wb-theme-logo--dark { display: none; }
+html:not([data-wb-variant="light"]) .wb-theme-logo--light { display: block; filter: brightness(0) invert(1); }
 
 .wb-technology-logo {
   width: min(150px, 38vw);
@@ -300,14 +309,23 @@ html:not([data-wb-variant="light"]) .wb-brand-mark__image[src*="garlando-logo"] 
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
-  padding: 20px 12px 10px;
-  background: linear-gradient(0deg, color-mix(in srgb, var(--wb-color-surface) 96%, transparent), transparent);
-  color: var(--wb-color-text-muted);
-  font-size: 9px;
+  z-index: 3;
+  padding: 34px 12px 11px;
+  background: linear-gradient(0deg, rgb(0 0 0 / .82), transparent);
+  color: var(--wb-color-white);
+  font-size: 10px;
+  font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1.35;
   text-transform: uppercase;
+}
+
+#garlando-mirror-design .wb-usp-detail figcaption,
+#garlando-commercial .wb-usp-detail figcaption {
+  top: 0;
+  bottom: auto;
+  padding: 11px 12px 34px;
+  background: linear-gradient(180deg, rgb(0 0 0 / .82), transparent);
 }
 
 .wb-usp-mosaic { display: grid; height: 100%; grid-template-columns: 1.5fr repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 2px; background: var(--wb-color-surface); }
@@ -337,7 +355,21 @@ html:not([data-wb-variant="light"]) .wb-brand-mark__image[src*="garlando-logo"] 
 
 #usp-v-leg .wb-usp-media--details-1 { grid-template-columns: minmax(0, 1.18fr) minmax(260px, 1fr); }
 
-.wb-rasson-lockup { position: relative; isolation: isolate; display: grid; min-height: 100%; overflow: hidden; place-content: center; justify-items: center; padding: var(--wb-deck-pad-y) var(--wb-deck-pad-x); background: radial-gradient(circle at center, color-mix(in srgb, var(--wb-color-brand-deep) 60%, transparent), transparent 42%), var(--wb-color-surface); text-align: center; }
+#garlando-commercial .wb-slide__grid { --wb-deck-text-col: minmax(620px, 54%); }
+#garlando-commercial .wb-slide__text { padding-bottom: clamp(148px, 18vh, 184px); }
+#garlando-commercial .wb-usp-media--details-2 { grid-template-columns: minmax(180px, .82fr) minmax(0, 1.18fr); }
+#garlando-commercial .wb-usp-media__hero .wb-media-image { object-fit: cover; }
+#garlando-commercial .wb-usp-media__details {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+#garlando-mirror-design .wb-slide__index {
+  top: var(--wb-deck-pad-y);
+  bottom: auto;
+}
+
+.wb-rasson-lockup { position: relative; isolation: isolate; display: grid; min-height: 100%; overflow: hidden; place-content: center; justify-items: center; padding: var(--wb-deck-pad-y) var(--wb-deck-pad-x) var(--wb-deck-bottom-safe); background: radial-gradient(circle at center, color-mix(in srgb, var(--wb-color-brand-deep) 60%, transparent), transparent 42%), var(--wb-color-surface); text-align: center; }
 .wb-rasson-lockup__media { position: absolute; inset: 0; z-index: -1; opacity: .12; }
 .wb-rasson-lockup__media-image { display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.25) contrast(.9); }
 .wb-rasson-lockup__weekend { width: min(210px, 34vw); margin-bottom: 22px; }
@@ -405,6 +437,31 @@ html[data-wb-variant="accent"] .wb-technology-logo__image--klematch { content: u
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.wb-distributor-logo {
+  width: min(236px, 44%);
+  margin: 0 0 20px;
+}
+
+.wb-distributor-logo__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+html:not([data-wb-variant="light"]) .wb-distributor-logo__image--theme-aware { filter: brightness(0) invert(1); }
+
+#garlando-engineering .wb-macro-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.3fr .7fr;
+}
+
+#garlando-engineering .wb-macro:first-child {
+  grid-column: 1 / -1;
 }
 
 .wb-slide--specs .wb-slide__grid { --wb-deck-text-col: minmax(560px, 62%); }

@@ -104,6 +104,7 @@
   --wb-deck-radius:         0px;
   --wb-deck-pad-x:          clamp(24px, 4.5vw, 72px);
   --wb-deck-pad-y:          clamp(28px, 5.5vh, 72px);
+  --wb-deck-bottom-safe:    clamp(104px, 13vh, 152px);
   --wb-deck-text-col:       minmax(360px, 42%);
   --wb-deck-media-col:      1fr;
   --wb-deck-gap:            clamp(16px, 2vw, 40px);

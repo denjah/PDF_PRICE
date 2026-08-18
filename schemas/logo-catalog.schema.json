@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weekend-billiard.local/schemas/logo-catalog.schema.json",
+  "title": "Weekend Billiard Logo Library",
+  "description": "Operational catalog for the recursively scanned, centralized LOGO library.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "libraryId", "rootFolder", "updatedAt", "brands", "assets", "placements"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0" },
+    "libraryId": { "$ref": "#/$defs/id" },
+    "rootFolder": { "$ref": "#/$defs/relativePath" },
+    "updatedAt": { "$ref": "#/$defs/dateTime" },
+    "brands": { "type": "array", "items": { "$ref": "#/$defs/brand" } },
+    "assets": { "type": "array", "items": { "$ref": "#/$defs/asset" } },
+    "placements": { "type": "array", "items": { "$ref": "#/$defs/placement" } },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 2,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "dateTime": { "type": "string", "format": "date-time" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "allOf": [
+        { "not": { "pattern": "^[A-Za-z]:[\\\\/]" } },
+        { "not": { "pattern": "^[/\\\\]" } },
+        { "not": { "pattern": "(^|[/\\\\])\\.\\.([/\\\\]|$)" } }
+      ]
+    },
+    "fileState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizeBytes", "modifiedAt"],
+      "properties": {
+        "sizeBytes": { "type": "integer", "minimum": 0 },
+        "modifiedAt": { "$ref": "#/$defs/dateTime" },
+        "fingerprint": { "type": "string", "minLength": 8 },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "mimeType": { "type": "string" },
+        "colorSpace": { "type": "string" }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brandId", "displayName", "kind", "aliases", "assetIds"],
+      "properties": {
+        "brandId": { "$ref": "#/$defs/id" },
+        "displayName": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": ["house-brand", "manufacturer", "federation", "technology-partner", "venue", "customer", "project", "unknown"]
+        },
+        "aliases": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "assetIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "preferred": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "lightBackgroundAssetId": { "$ref": "#/$defs/id" },
+            "darkBackgroundAssetId": { "$ref": "#/$defs/id" },
+            "printAssetId": { "$ref": "#/$defs/id" },
+            "fallbackAssetId": { "$ref": "#/$defs/id" }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "relativePath", "brandId", "status", "detectedAt", "fileState", "format", "assetType", "layout", "colorway", "backgroundCompatibility", "usage", "transformPolicy"],
+      "properties": {
+        "assetId": { "$ref": "#/$defs/id" },
+        "relativePath": { "$ref": "#/$defs/relativePath" },
+        "brandId": { "$ref": "#/$defs/id" },
+        "status": { "enum": ["new", "review", "approved", "rejected", "stale", "missing"] },
+        "detectedAt": { "$ref": "#/$defs/dateTime" },
+        "reviewedAt": { "$ref": "#/$defs/dateTime" },
+        "fileState": { "$ref": "#/$defs/fileState" },
+        "format": { "enum": ["svg", "png", "pdf", "ai", "eps", "cdr", "psd", "tif", "tiff", "jpg", "jpeg", "other"] },
+        "isVector": { "type": "boolean" },
+        "transparency": { "enum": ["yes", "no", "unknown"] },
+        "assetType": { "enum": ["wordmark", "symbol", "lockup", "badge", "certification", "partner-mark", "subbrand", "unknown"] },
+        "layout": { "enum": ["horizontal", "vertical", "square", "round", "freeform", "unknown"] },
+        "colorway": { "enum": ["full-color", "brand-color", "dark", "light", "mono-black", "mono-white", "unknown"] },
+        "backgroundCompatibility": {
+          "type": "array",
+          "items": { "enum": ["light", "dark", "photographic", "brand-color", "any", "unknown"] },
+          "uniqueItems": true
+        },
+        "usage": {
+          "type": "array",
+          "items": { "enum": ["hero", "header", "footer", "partner-grid", "certification", "technical", "icon", "web", "pdf", "print", "reference-only"] },
+          "uniqueItems": true
+        },
+        "transformPolicy": { "enum": ["forbidden", "recolor-approved", "convert-only", "unknown"] },
+        "derivedFromAssetId": { "$ref": "#/$defs/id" },
+        "description": { "type": "string" },
+        "notes": { "type": "string" },
+        "extensions": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "placement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["placementId", "deckId", "assetId", "role", "background", "output", "transform", "status"],
+      "properties": {
+        "placementId": { "$ref": "#/$defs/id" },
+        "deckId": { "$ref": "#/$defs/id" },
+        "slideId": { "$ref": "#/$defs/id" },
+        "assetId": { "$ref": "#/$defs/id" },
+        "role": { "enum": ["primary-brand", "manufacturer", "partner", "certification", "customer", "footer", "other"] },
+        "background": { "enum": ["light", "dark", "photographic", "brand-color"] },
+        "output": { "enum": ["web", "pdf", "print"] },
+        "transform": { "enum": ["none", "recolor", "convert"] },
+        "status": { "enum": ["draft", "approved", "rejected", "stale"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

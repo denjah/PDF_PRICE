@@ -41,17 +41,23 @@ const renderImage = (
   asset: AssetRef,
   className = '',
   eager = false,
-): string => `
+): string => {
+  const adaptiveGarlandoLogo = asset.kind === 'logo' && ['garlando-logo-cover', 'garlando-logo-heritage', 'garlando-logo-dealer'].includes(asset.id)
+  const image = (src: string, extraClass = '', alt = asset.alt): string => `
   <img
-    class="${escapeHtml(className)}"
-    src="${escapeHtml(asset.src)}"
-    alt="${escapeHtml(asset.alt)}"
+    class="${escapeHtml(`${className} ${extraClass}`.trim())}"
+    src="${escapeHtml(src)}"
+    alt="${escapeHtml(alt)}"
     loading="${eager || forceEagerImages ? 'eager' : 'lazy'}"
     decoding="async"
     ${eager ? 'fetchpriority="high"' : ''}
     style="--wb-object-position: ${escapeHtml(asset.focalPoint ?? 'center')}"
   />
 `
+  return adaptiveGarlandoLogo
+    ? `${image('/brand/garlando/garlando-black.svg', 'wb-theme-logo wb-theme-logo--dark')}${image('/brand/garlando/garlando-black.svg', 'wb-theme-logo wb-theme-logo--light', '')}`
+    : image(asset.src)
+}
 
 const renderPlaceholder = (slide: DeckSlide, className = ''): string => `
   <div class="wb-media-placeholder ${escapeHtml(className)}" aria-label="Заглушка изображения">
@@ -158,8 +164,9 @@ const renderCover = (slide: CoverSlide): string => {
 }
 
 const renderDistributor = (slide: DistributorSlide): string => {
-  const hero = slide.media[0]
-  const body = `${renderTitle(slide)}${renderMetrics(slide.metrics)}${renderFeatures(slide.features)}`
+  const hero = slide.media.find((asset) => asset.kind === 'image')
+  const logo = slide.media.find((asset) => asset.kind === 'logo')
+  const body = `${logo ? `<div class="wb-distributor-logo wb-anim">${renderImage(logo, 'wb-distributor-logo__image wb-distributor-logo__image--theme-aware')}</div>` : ''}${renderTitle(slide)}${renderMetrics(slide.metrics)}${renderFeatures(slide.features)}`
   return renderFrame(slide, body, hero ? `${renderImage(hero, 'wb-media-image')}<span class="wb-media-veil"></span>` : '')
 }
 

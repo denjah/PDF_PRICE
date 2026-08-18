@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weekend-billiard.local/schemas/shot-plan.schema.json",
+  "title": "Weekend Billiard Shot Plan",
+  "description": "Required visual coverage for one product presentation. Canonical location: PHOTOBASE/<PRODUCT>/MARKETING/shot_plan.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "productId", "deckSlug", "status", "updatedAt", "categories", "slots"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0" },
+    "productId": { "$ref": "#/$defs/id" },
+    "deckSlug": { "$ref": "#/$defs/id" },
+    "status": { "enum": ["not_started", "draft", "review_required", "approved", "blocked", "released"] },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "categories": { "type": "array", "items": { "$ref": "#/$defs/category" } },
+    "slots": { "type": "array", "items": { "$ref": "#/$defs/slot" } },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "minLength": 2 },
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["categoryId", "label", "enabled", "minimum", "ideal"],
+      "properties": {
+        "categoryId": { "$ref": "#/$defs/id" },
+        "label": { "type": "string", "minLength": 1 },
+        "enabled": { "type": "boolean" },
+        "minimum": { "type": "integer", "minimum": 0 },
+        "ideal": { "type": "integer", "minimum": 0 },
+        "maximum": { "type": "integer", "minimum": 0 },
+        "rationale": { "type": "string" }
+      }
+    },
+    "slot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shotId", "title", "categoryId", "required", "status", "purpose", "desiredCount", "assignedAssetIds", "recipeIds", "slideIds"],
+      "properties": {
+        "shotId": { "$ref": "#/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "categoryId": { "$ref": "#/$defs/id" },
+        "required": { "type": "boolean" },
+        "status": { "enum": ["planned", "prompt_ready", "generating", "candidate_ready", "approved", "blocked"] },
+        "purpose": { "type": "string", "minLength": 1 },
+        "desiredCount": { "type": "integer", "minimum": 1 },
+        "aspectRatios": { "type": "array", "items": { "type": "string", "pattern": "^[0-9]+:[0-9]+$" }, "uniqueItems": true },
+        "assignedAssetIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "recipeIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "slideIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "collectionId": { "$ref": "#/$defs/id" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

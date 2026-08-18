@@ -61,8 +61,8 @@
 .wb-console-stage { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: var(--wb-color-black); }
 .wb-console-canvas { position: absolute; top: 0; left: 0; width: 1440px; height: 810px; transform: scale(var(--wb-console-scale, 0.25)); transform-origin: top left; }
 .wb-console-canvas .wb-slide { width: 1440px; min-height: 810px; height: 810px; border-radius: 0; pointer-events: auto; }
-.wb-console-canvas .wb-slide__text { padding: 56px 72px; }
-.wb-console-canvas .wb-brand-story, .wb-console-canvas .wb-championship-copy, .wb-console-canvas .wb-closing-copy { width: 760px; min-height: 810px; padding: 56px 72px; }
+.wb-console-canvas .wb-slide__text { padding: 52px 72px 108px; }
+.wb-console-canvas .wb-brand-story, .wb-console-canvas .wb-championship-copy, .wb-console-canvas .wb-closing-copy { width: 760px; min-height: 810px; padding: 52px 72px 108px; }
 .wb-console-canvas .wb-anim { opacity: 1; transform: none; animation: none !important; }
 .wb-console-canvas .wb-editable-object { cursor: grab; outline: 0 solid transparent; transition: outline-color 120ms ease; }
 .wb-console-canvas .wb-editable-object:hover { outline: 2px dashed color-mix(in srgb, var(--wb-color-accent) 80%, transparent); outline-offset: 5px; }

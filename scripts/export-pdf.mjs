@@ -1,5 +1,5 @@
 import { spawn, spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, rmSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, rmSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { setTimeout as wait } from 'node:timers/promises'
 
@@ -27,8 +27,12 @@ try {
   await wait(1200)
   const result = spawnSync(browser, ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', `--print-to-pdf=${printedPdf}`, `http://127.0.0.1:4174/?pdf=1&deck=${encodeURIComponent(deckSlug)}`], { encoding: 'utf8', timeout: 120000 })
   if (result.status !== 0 || !existsSync(printedPdf)) throw new Error(result.stderr || 'Browser did not create the PDF.')
-  const optimized = spawnSync(python, [resolve(root, 'scripts', 'optimize-pdf.py'), printedPdf, output], { encoding: 'utf8', timeout: 120000 })
-  if (optimized.status !== 0 || !existsSync(output)) throw new Error(optimized.stderr || 'Could not optimize PDF images.')
+  if (process.env.PDF_OPTIMIZE_IMAGES === '1') {
+    const optimized = spawnSync(python, [resolve(root, 'scripts', 'optimize-pdf.py'), printedPdf, output], { encoding: 'utf8', timeout: 120000 })
+    if (optimized.status !== 0 || !existsSync(output)) throw new Error(optimized.stderr || 'Could not optimize PDF images.')
+  } else {
+    copyFileSync(printedPdf, output)
+  }
   console.log(`PDF created: ${output}`)
 } finally {
   server.kill()

@@ -76,7 +76,7 @@ html {
   flex-direction: column;
   justify-content: center;
   min-width: 0;
-  padding: var(--wb-deck-pad-y) var(--wb-deck-pad-x);
+  padding: var(--wb-deck-pad-y) var(--wb-deck-pad-x) var(--wb-deck-bottom-safe);
   background: linear-gradient(105deg, var(--wb-color-surface) 0%, var(--wb-color-surface) 62%, color-mix(in srgb, var(--wb-color-surface) 82%, transparent) 100%);
 }
 
@@ -220,7 +220,7 @@ html {
   justify-content: center;
   width: min(760px, 58vw);
   min-height: 100%;
-  padding: var(--wb-deck-pad-y) var(--wb-deck-pad-x);
+  padding: var(--wb-deck-pad-y) var(--wb-deck-pad-x) var(--wb-deck-bottom-safe);
 }
 
 .wb-closing-copy {
@@ -378,23 +378,8 @@ html {
   .wb-anim { opacity: 1 !important; transform: none !important; animation: none !important; }
 }
 
-body.wb-pdf-render {
-  --wb-font-display: Georgia, "Times New Roman", serif;
-  --wb-font-body: Arial, Helvetica, sans-serif;
-}
 body.wb-pdf-render .wb-anim { opacity: 1 !important; transform: none !important; animation: none !important; }
 body.wb-pdf-render .wb-btn-cta--pdf { display: none; }
-body.wb-pdf-render .wb-slide__text,
-body.wb-pdf-render .wb-slide--reverse .wb-slide__text,
-body.wb-pdf-render .wb-brand-story,
-body.wb-pdf-render .wb-championship-copy,
-body.wb-pdf-render .wb-closing-copy,
-body.wb-pdf-render .wb-rasson-lockup { background: var(--wb-color-surface); }
-body.wb-pdf-render .wb-media-veil,
-body.wb-pdf-render .wb-full-media__veil,
-body.wb-pdf-render .wb-rasson-lockup__media { display: none; }
-body.wb-pdf-render .wb-media-image,
-body.wb-pdf-render .wb-rasson-lockup__media-image { filter: none; opacity: 1; }
 body.wb-pdf-render .wb-noise::after { display: none; }
 body.wb-pdf-slide .wb-deck { overflow: hidden; }
 body.wb-pdf-slide .wb-slide { height: 100dvh; min-height: 100dvh; }

@@ -2,9 +2,10 @@ import './styles/tokens.css'
 import './styles/deck.css'
 import './styles/components.css'
 import './styles/console.css'
+import './styles/workspace-v2.css'
 
 import { applyColors, applyPositions, clearColors, readDraft } from './console/state'
-import { mountWorkspace } from './console/workspace'
+import { mountWorkspace } from './console/workspace-v2'
 import { deckCatalog, resolveDeck } from './deck/catalog'
 import { mountDeck } from './deck/render'
 import type { DeckDefinition, WbTheme, WbVariant } from './deck/types'
@@ -15,23 +16,23 @@ if (!app) {
   throw new Error('App root was not found')
 }
 
-const params = new URLSearchParams(window.location.search)
-const selectedDeck = resolveDeck(params.get('deck'))
-const deck = selectedDeck.deck
-const isPdfRender = params.get('pdf') === '1'
-const pdfSlideId = params.get('slide')
-const themes: WbTheme[] = ['home', 'sport', 'classic', 'club']
-const variants: WbVariant[] = ['dark', 'light', 'accent']
-const savedDraft = readDraft(deck.slug)
-const theme = params.get('theme') as WbTheme
-const variant = params.get('variant') as WbVariant
-const previewDeck: DeckDefinition = {
-  ...deck,
-  theme: themes.includes(theme) ? theme : savedDraft?.theme ?? deck.theme,
-  variant: variants.includes(variant) ? variant : savedDraft?.variant ?? deck.variant,
-}
-
 try {
+  const params = new URLSearchParams(window.location.search)
+  const selectedDeck = resolveDeck(params.get('deck'))
+  const deck = selectedDeck.deck
+  const isPdfRender = params.get('pdf') === '1'
+  const pdfSlideId = params.get('slide')
+  const themes: WbTheme[] = ['home', 'sport', 'classic', 'club']
+  const variants: WbVariant[] = ['dark', 'light', 'accent']
+  const savedDraft = readDraft(deck.slug)
+  const theme = params.get('theme') as WbTheme
+  const variant = params.get('variant') as WbVariant
+  const previewDeck: DeckDefinition = {
+    ...deck,
+    theme: themes.includes(theme) ? theme : savedDraft?.theme ?? deck.theme,
+    variant: variants.includes(variant) ? variant : savedDraft?.variant ?? deck.variant,
+  }
+
   document.documentElement.dataset.wbDeck = deck.slug
   if (window.location.pathname.replace(/\/+$/, '') === '/console') {
     document.body.classList.add('wb-console-page')
@@ -64,6 +65,6 @@ try {
   }
 } catch (error) {
   console.error(error)
-  app.innerHTML = `<main class="wb-app-error"><h1>Не удалось открыть презентацию</h1><p>Перезапустите <code>npm run dev</code>. Детали ошибки доступны в консоли браузера.</p></main>`
+  app.innerHTML = '<main class="wb-app-error"><h1>Не удалось открыть презентацию</h1><p>Параметр deck не зарегистрирован или данные презентации повреждены. Вернитесь в Console и выберите доступную презентацию.</p></main>'
 }
 

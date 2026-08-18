@@ -6,11 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "index:workspace": "node scripts/workspace-data.mjs --write",
+    "validate:data": "node scripts/validate-workspace.mjs",
+    "compile:prompts": "node scripts/compile-prompts.mjs garlando",
+    "compile:prompts:rasson": "node scripts/compile-prompts.mjs rasson-victory-ii-plus-white",
+    "export:prompts": "node scripts/export-prompts.mjs garlando",
+    "export:prompts:rasson": "node scripts/export-prompts.mjs rasson-victory-ii-plus-white",
     "export:pdf": "npm run build && node scripts/export-pdf.mjs",
     "export:garlando": "npm run export:pdf -- --deck garlando-image",
+    "export:rasson": "npm run export:pdf -- --deck rasson-victory-ii-plus-white",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "typescript": "^5.9.2",
     "vite": "^7.1.1"
   }

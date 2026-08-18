@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weekend-billiard.local/schemas/photodesign.schema.json",
+  "title": "Weekend Billiard Photodesign",
+  "description": "Operational metadata for a recursively scanned product photo tree. User-controlled Bridge folders remain in PHOTOBASE; this document stores virtual organization and review state without depending on names or directory semantics.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "productId", "productFolder", "updatedAt", "assets", "collections"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0" },
+    "productId": { "$ref": "#/$defs/id" },
+    "productFolder": { "$ref": "#/$defs/relativePath" },
+    "updatedAt": { "$ref": "#/$defs/dateTime" },
+    "assets": { "type": "array", "items": { "$ref": "#/$defs/asset" } },
+    "collections": { "type": "array", "items": { "$ref": "#/$defs/collection" } },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "minLength": 2 },
+    "dateTime": { "type": "string", "format": "date-time" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "allOf": [
+        { "not": { "pattern": "^[A-Za-z]:[\\\\/]" } },
+        { "not": { "pattern": "^[/\\\\]" } },
+        { "not": { "pattern": "(^|[/\\\\])\\.\\.([/\\\\]|$)" } }
+      ]
+    },
+    "imageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "allOf": [
+        { "$ref": "#/$defs/relativePath" },
+        { "pattern": "\\.(?:[jJ][pP][eE]?[gG]|[pP][nN][gG]|[wW][eE][bB][pP]|[tT][iI][fF]{1,2}|[pP][sS][dD]|[pP][dD][fF])$" }
+      ]
+    },
+    "categoryAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["categoryId", "role", "sortOrder"],
+      "properties": {
+        "categoryId": { "$ref": "#/$defs/id" },
+        "role": { "enum": ["primary", "alternate", "slideshow", "reference-only", "rejected"] },
+        "sortOrder": { "type": "integer", "minimum": 0 },
+        "confirmedByUser": { "type": "boolean", "default": false }
+      }
+    },
+    "fileState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizeBytes", "modifiedAt"],
+      "properties": {
+        "sizeBytes": { "type": "integer", "minimum": 0 },
+        "modifiedAt": { "$ref": "#/$defs/dateTime" },
+        "fingerprint": { "type": "string", "minLength": 8 },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "mimeType": { "type": "string", "pattern": "^(image|application)/" }
+      }
+    },
+    "auditLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "document": { "$ref": "#/$defs/relativePath" },
+        "heading": { "type": "string" },
+        "summary": { "type": "string" }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "relativePath", "origin", "status", "detectedAt", "fileState", "categories", "shotSlotIds", "slideIds", "collectionIds"],
+      "properties": {
+        "assetId": { "$ref": "#/$defs/id" },
+        "relativePath": { "$ref": "#/$defs/imageRelativePath" },
+        "origin": { "enum": ["source", "generated", "unclassified"] },
+        "status": { "enum": ["new", "review", "approved", "rejected", "stale"] },
+        "detectedAt": { "$ref": "#/$defs/dateTime" },
+        "reviewedAt": { "$ref": "#/$defs/dateTime" },
+        "fileState": { "$ref": "#/$defs/fileState" },
+        "categories": { "type": "array", "items": { "$ref": "#/$defs/categoryAssignment" } },
+        "audit": { "$ref": "#/$defs/auditLink" },
+        "shotSlotIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "slideIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "collectionIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "generationRecordId": { "$ref": "#/$defs/id" },
+        "notes": { "type": "string" },
+        "extensions": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "collection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collectionId", "categoryId", "mode", "assetIds"],
+      "properties": {
+        "collectionId": { "$ref": "#/$defs/id" },
+        "categoryId": { "$ref": "#/$defs/id" },
+        "mode": { "enum": ["single", "slideshow", "sequence"] },
+        "assetIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "primaryAssetId": { "$ref": "#/$defs/id" },
+        "posterAssetId": { "$ref": "#/$defs/id" },
+        "transition": { "enum": ["none", "crossfade", "cut", "slide"] },
+        "intervalMs": { "type": "integer", "minimum": 1000 },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
